@@ -7,6 +7,12 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import styles from "./styles/app.css";
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+
+storyblokInit({
+  accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
+  use: [apiPlugin],
+});
 
 export const meta = () => ({
   charset: "utf-8",
