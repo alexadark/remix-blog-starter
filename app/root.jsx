@@ -8,10 +8,22 @@ import {
 } from "@remix-run/react";
 import styles from "./styles/app.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
+import { Page, Post } from "./storyblok";
+
+const components = {
+  // content: Content,
+  // "last-posts": LastPosts,
+  page: Page,
+  post: Post,
+  // "nav-item": MenuItem,
+  // "featured-projects": FeaturedProjects,
+  // "posts-archive": PostsArchive,
+};
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
   use: [apiPlugin],
+  components,
 });
 
 export const meta = () => ({
