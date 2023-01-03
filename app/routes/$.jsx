@@ -8,7 +8,7 @@ import {
 } from "@storyblok/react";
 
 export default function Page() {
-  let story = useLoaderData();
+  let { story } = useLoaderData();
   story = useStoryblokState(story);
 
   return <StoryblokComponent blok={story.content} />;
@@ -16,15 +16,26 @@ export default function Page() {
 
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
-  // Nested folder routing example:
-  // let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
+  const sbApi = getStoryblokApi();
 
   const resolveRelations = ["post.categories", "post.tags", "post.author"];
+
+  // const numberOfPosts = data.story.content.body?.find(
+  //   (item) => item.component === "last-posts"
+  // )?.number_of_posts;
 
   let { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, {
     version: "draft",
     resolve_relations: resolveRelations,
   });
-  // Or `cdn/stories/${blogSlug ? blogSlug : slug}` if you follow the example above
-  return json(data?.story);
+  let { data: blog } = await sbApi.get(`cdn/stories`, {
+    version: "draft",
+    starts_with: "blog/",
+    is_startpage: false,
+  });
+
+  return json({
+    story: data?.story,
+    lastPosts: blog?.stories.slice(0, 3),
+  });
 };
