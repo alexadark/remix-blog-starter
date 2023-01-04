@@ -236,7 +236,7 @@ var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), components = {
   "all-posts": AllPosts_default
 };
 (0, import_react17.storyblokInit)({
-  accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
+  accessToken: "xvluQNsWzAEEKECrdlwWVQtt",
   use: [import_react17.apiPlugin],
   components
 });
@@ -250,48 +250,48 @@ function App() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 46,
+        lineNumber: 47,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 47,
+        lineNumber: 48,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 45,
+      lineNumber: 46,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Outlet, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 50,
+        lineNumber: 51,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.ScrollRestoration, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 51,
+        lineNumber: 52,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 52,
+        lineNumber: 53,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.LiveReload, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 53,
+        lineNumber: 54,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 49,
+      lineNumber: 50,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.jsx",
-    lineNumber: 44,
+    lineNumber: 45,
     columnNumber: 5
   }, this);
 }
@@ -390,7 +390,7 @@ var loader = async ({ params }) => {
 };
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "a6e4aeb2", entry: { module: "/build/entry.client-PAPUIL3Y.js", imports: ["/build/_shared/chunk-UKV6XGJ2.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-IJ2LQGJQ.js", imports: ["/build/_shared/chunk-UYYA3JGX.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-3T7Z4LA2.js", imports: ["/build/_shared/chunk-GI4A2XHF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-ZOLUCALV.js", imports: ["/build/_shared/chunk-GI4A2XHF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-A6E4AEB2.js" };
+var assets_manifest_default = { version: "da4f3baa", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NJUHD2PA.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-3TIUQRSP.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-WYH2OOS7.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-DA4F3BAA.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

@@ -28,7 +28,8 @@ const components = {
 };
 
 storyblokInit({
-  accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
+  accessToken: "xvluQNsWzAEEKECrdlwWVQtt",
+  // accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
   use: [apiPlugin],
   components,
 });
