@@ -50,6 +50,7 @@ var root_exports = {};
 __export(root_exports, {
   default: () => App,
   links: () => links,
+  loader: () => loader,
   meta: () => meta
 });
 var import_react16 = require("@remix-run/react");
@@ -227,7 +228,11 @@ var import_react13 = require("@storyblok/react"), import_react14 = require("@rem
 }, AllPosts_default = AllPosts;
 
 // app/root.jsx
-var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), components = {
+var import_node = require("@remix-run/node"), import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), isServer = typeof window > "u", accessToken = isServer ? process.env.STORYBLOK_PREVIEW_TOKEN : window.env.STORYBLOK_PREVIEW_TOKEN, loader = async () => (0, import_node.json)({
+  env: {
+    STORYBLOK_PREVIEW_TOKEN: process.env.STORYBLOK_PREVIEW_TOKEN
+  }
+}), components = {
   content: Content_default,
   "last-posts": LastPosts_default,
   page: Page_default,
@@ -236,7 +241,7 @@ var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), components = {
   "all-posts": AllPosts_default
 };
 (0, import_react17.storyblokInit)({
-  accessToken: "xvluQNsWzAEEKECrdlwWVQtt",
+  accessToken,
   use: [import_react17.apiPlugin],
   components
 });
@@ -246,52 +251,69 @@ var meta = () => ({
   viewport: "width=device-width,initial-scale=1"
 });
 function App() {
+  let { env } = (0, import_react16.useLoaderData)();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("html", { lang: "en", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 47,
+        lineNumber: 63,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 48,
+        lineNumber: 64,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 46,
+      lineNumber: 62,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Outlet, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 51,
+        lineNumber: 67,
         columnNumber: 9
       }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+        "script",
+        {
+          dangerouslySetInnerHTML: {
+            __html: `window.env = ${JSON.stringify(env)}`
+          }
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/root.jsx",
+          lineNumber: 68,
+          columnNumber: 9
+        },
+        this
+      ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.ScrollRestoration, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 52,
+        lineNumber: 73,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 53,
+        lineNumber: 74,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react16.LiveReload, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 54,
+        lineNumber: 75,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 50,
+      lineNumber: 66,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.jsx",
-    lineNumber: 45,
+    lineNumber: 61,
     columnNumber: 5
   }, this);
 }
@@ -303,16 +325,16 @@ function links() {
 var routes_exports = {};
 __export(routes_exports, {
   default: () => Page2,
-  loader: () => loader
+  loader: () => loader2
 });
 
 // app/routes/$.jsx
 var __exports = {};
 __export(__exports, {
   default: () => Page2,
-  loader: () => loader
+  loader: () => loader2
 });
-var import_node = require("@remix-run/node"), import_react20 = require("@remix-run/react"), import_react21 = require("@storyblok/react");
+var import_node2 = require("@remix-run/node"), import_react20 = require("@remix-run/react"), import_react21 = require("@storyblok/react");
 
 // app/components/MainMenu.jsx
 var import_react18 = require("@storyblok/react"), import_react19 = require("@remix-run/react"), import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), MainMenu = () => {
@@ -370,7 +392,7 @@ function Page2() {
     columnNumber: 5
   }, this);
 }
-var loader = async ({ params }) => {
+var loader2 = async ({ params }) => {
   let slug = params["*"] ?? "home", sbApi = (0, import_react21.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await (0, import_react21.getStoryblokApi)().get(`cdn/stories/${slug}`, {
     version: "draft",
     resolve_relations: resolveRelations
@@ -382,7 +404,7 @@ var loader = async ({ params }) => {
     version: "draft",
     resolve_links: "url"
   });
-  return (0, import_node.json)({
+  return (0, import_node2.json)({
     story: data == null ? void 0 : data.story,
     posts: blog == null ? void 0 : blog.stories,
     config: config == null ? void 0 : config.story
@@ -390,7 +412,7 @@ var loader = async ({ params }) => {
 };
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "da4f3baa", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NJUHD2PA.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-3TIUQRSP.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-WYH2OOS7.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-DA4F3BAA.js" };
+var assets_manifest_default = { version: "eed1ec16", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-EJSKEIHM.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-3TIUQRSP.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-WYH2OOS7.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-EED1EC16.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
