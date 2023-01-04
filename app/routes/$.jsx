@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, Link } from "@remix-run/react";
 
 import {
   getStoryblokApi,
@@ -7,11 +7,25 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
+import MainMenu from "~/components/MainMenu";
+
 export default function Page() {
   let { story } = useLoaderData();
   story = useStoryblokState(story);
 
-  return <StoryblokComponent blok={story.content} />;
+  return (
+    <main>
+      <header>
+        <div className="flex justify-between align-center">
+          <Link to="/">
+            <h1 className="text-3xl font-bold">Alexandra Spalato</h1>
+          </Link>
+          <MainMenu />
+        </div>
+      </header>
+      <StoryblokComponent blok={story.content} />
+    </main>
+  );
 }
 
 export const loader = async ({ params }) => {
@@ -20,22 +34,25 @@ export const loader = async ({ params }) => {
 
   const resolveRelations = ["post.categories", "post.tags", "post.author"];
 
-  // const numberOfPosts = data.story.content.body?.find(
-  //   (item) => item.component === "last-posts"
-  // )?.number_of_posts;
-
-  let { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, {
+  const { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, {
     version: "draft",
     resolve_relations: resolveRelations,
   });
-  let { data: blog } = await sbApi.get(`cdn/stories`, {
+  const { data: blog } = await sbApi.get(`cdn/stories`, {
     version: "draft",
     starts_with: "blog/",
     is_startpage: false,
   });
 
+  const { data: config } = await sbApi.get(`cdn/stories/config`, {
+    version: "draft",
+    resolve_links: "url",
+  });
+
   return json({
     story: data?.story,
+    posts: blog?.stories,
     lastPosts: blog?.stories.slice(0, 3),
+    config: config?.story,
   });
 };

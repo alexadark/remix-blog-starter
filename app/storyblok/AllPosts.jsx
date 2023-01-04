@@ -2,13 +2,13 @@ import { storyblokEditable } from "@storyblok/react";
 import { useLoaderData, Link } from "@remix-run/react";
 
 const AllPosts = ({ blok }) => {
-  const data = useLoaderData();
-  // const posts = data.allPosts.data.stories;
-  console.log(data);
+  const { posts } = useLoaderData();
+
+  console.log("posts", posts);
   return (
     <main {...storyblokEditable(blok)} key={blok._uid}>
       <h1>{blok.headline}</h1>
-      {/* {posts.map((p) => {
+      {posts?.map((p) => {
         const post = p.content;
         return (
           <article key={post._uid}>
@@ -18,7 +18,7 @@ const AllPosts = ({ blok }) => {
             <p>{post.teaser}</p>
           </article>
         );
-      })} */}
+      })}
     </main>
   );
 };

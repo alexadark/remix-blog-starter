@@ -5,18 +5,17 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  Link,
 } from "@remix-run/react";
-import { json } from "@remix-run/node";
+
 import styles from "./styles/app.css";
-import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
+import { storyblokInit, apiPlugin } from "@storyblok/react";
 
 import Page from "./storyblok/Page";
 import Post from "./storyblok/Post";
 import Content from "./storyblok/Content";
 import LastPosts from "./storyblok/LastPosts";
 import MenuItem from "./storyblok/MenuItem";
-import MainMenu from "./components/MainMenu";
+
 import AllPosts from "./storyblok/AllPosts";
 
 const components = {
@@ -40,19 +39,6 @@ export const meta = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export const loader = async () => {
-  const sbApi = getStoryblokApi();
-
-  let { data: config } = await sbApi.get(`cdn/stories/config`, {
-    version: "draft",
-    resolve_links: "url",
-  });
-
-  return json({
-    config: config?.story,
-  });
-};
-
 export default function App() {
   return (
     <html lang="en">
@@ -61,14 +47,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <header>
-          <div className="flex justify-between align-center">
-            <Link to="/">
-              <h1 className="text-3xl font-bold">Alexandra Spalato</h1>
-            </Link>
-            <MainMenu />
-          </div>
-        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
