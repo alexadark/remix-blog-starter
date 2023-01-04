@@ -52,7 +52,6 @@ export const loader = async ({ params }) => {
   return json({
     story: data?.story,
     posts: blog?.stories,
-    lastPosts: blog?.stories.slice(0, 3),
     config: config?.story,
   });
 };

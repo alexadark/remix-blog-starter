@@ -2,8 +2,6 @@ import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 
 const Post = ({ blok }) => {
-  console.log("post", blok);
-
   const { _uid, headline, content, categories, image, tags, author } = blok;
   return (
     <main {...storyblokEditable(blok)} key={blok._uid}>
