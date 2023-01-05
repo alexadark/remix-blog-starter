@@ -15,14 +15,7 @@ export default function Page() {
 
   return (
     <main>
-      <header>
-        <div className="flex justify-between align-center">
-          <Link to="/">
-            <h1 className="text-3xl font-bold">Alexandra Spalato</h1>
-          </Link>
-          <Header />
-        </div>
-      </header>
+      <Header />
       <StoryblokComponent blok={story.content} />
     </main>
   );
