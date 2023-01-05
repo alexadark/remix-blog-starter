@@ -35,6 +35,13 @@ export const loader = async ({ params }) => {
     version: "draft",
     starts_with: "blog/",
     is_startpage: false,
+    resolve_relations: resolveRelations,
+  });
+
+  const { data: category } = await sbApi.get(`cdn/stories`, {
+    version: "draft",
+    starts_with: "categories/",
+    is_startpage: false,
   });
 
   const { data: config } = await sbApi.get(`cdn/stories/config`, {
@@ -46,5 +53,6 @@ export const loader = async ({ params }) => {
     story: data?.story,
     posts: blog?.stories,
     config: config?.story,
+    categories: category?.stories,
   });
 };

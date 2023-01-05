@@ -16,8 +16,8 @@ import Post from "./storyblok/Post";
 import Content from "./storyblok/Content";
 import LastPosts from "./storyblok/LastPosts";
 import MenuItem from "./storyblok/MenuItem";
-
 import AllPosts from "./storyblok/AllPosts";
+import Category from "./storyblok/Category";
 import { json } from "@remix-run/node";
 
 const isServer = typeof window === "undefined";
@@ -41,6 +41,7 @@ const components = {
   post: Post,
   "nav-item": MenuItem,
   "all-posts": AllPosts,
+  category: Category,
 };
 
 storyblokInit({

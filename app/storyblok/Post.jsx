@@ -1,10 +1,13 @@
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
+import { useLoaderData } from "@remix-run/react";
 
-const Post = ({ blok }) => {
+const Post = () => {
+  const { story } = useLoaderData();
+  const blok = story.content;
   const { _uid, headline, content, categories, image, tags, author } = blok;
   return (
-    <main {...storyblokEditable(blok)} key={blok._uid}>
+    <article {...storyblokEditable(blok)} key={blok._uid}>
       <img
         src={`${image.filename}/m/1200x400/smart/filters:grayscale():quality(60)/`}
         alt=""
@@ -23,7 +26,7 @@ const Post = ({ blok }) => {
       </div>
       <h3>Author</h3>
       <div>{author.name}</div>
-    </main>
+    </article>
   );
 };
 
