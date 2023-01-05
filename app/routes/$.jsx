@@ -7,7 +7,7 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-import MainMenu from "~/components/MainMenu";
+import Header from "~/components/Header";
 
 export default function Page() {
   let { story } = useLoaderData();
@@ -20,7 +20,7 @@ export default function Page() {
           <Link to="/">
             <h1 className="text-3xl font-bold">Alexandra Spalato</h1>
           </Link>
-          <MainMenu />
+          <Header />
         </div>
       </header>
       <StoryblokComponent blok={story.content} />

@@ -334,7 +334,10 @@ __export(__exports, {
   default: () => Page2,
   loader: () => loader2
 });
-var import_node2 = require("@remix-run/node"), import_react20 = require("@remix-run/react"), import_react21 = require("@storyblok/react");
+var import_node2 = require("@remix-run/node"), import_react21 = require("@remix-run/react"), import_react22 = require("@storyblok/react");
+
+// app/components/Header.jsx
+var import_react20 = require("@remix-run/react");
 
 // app/components/MainMenu.jsx
 var import_react18 = require("@storyblok/react"), import_react19 = require("@remix-run/react"), import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), MainMenu = () => {
@@ -352,13 +355,39 @@ var import_react18 = require("@storyblok/react"), import_react19 = require("@rem
   }, this);
 }, MainMenu_default = MainMenu;
 
+// app/components/Header.jsx
+var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), Header = () => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("header", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex justify-between align-center", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(import_react20.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h1", { className: "text-3xl font-bold", children: "Alexandra Spalato" }, void 0, !1, {
+    fileName: "app/components/Header.jsx",
+    lineNumber: 9,
+    columnNumber: 11
+  }, this) }, void 0, !1, {
+    fileName: "app/components/Header.jsx",
+    lineNumber: 8,
+    columnNumber: 9
+  }, this),
+  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(MainMenu_default, {}, void 0, !1, {
+    fileName: "app/components/Header.jsx",
+    lineNumber: 11,
+    columnNumber: 9
+  }, this)
+] }, void 0, !0, {
+  fileName: "app/components/Header.jsx",
+  lineNumber: 7,
+  columnNumber: 7
+}, this) }, void 0, !1, {
+  fileName: "app/components/Header.jsx",
+  lineNumber: 6,
+  columnNumber: 5
+}, this), Header_default = Header;
+
 // app/routes/$.jsx
-var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime");
+var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime");
 function Page2() {
-  let { story } = (0, import_react20.useLoaderData)();
-  return story = (0, import_react21.useStoryblokState)(story), /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("main", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("header", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex justify-between align-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(import_react20.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h1", { className: "text-3xl font-bold", children: "Alexandra Spalato" }, void 0, !1, {
+  let { story } = (0, import_react21.useLoaderData)();
+  return story = (0, import_react22.useStoryblokState)(story), /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("main", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("header", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex justify-between align-center", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react21.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h1", { className: "text-3xl font-bold", children: "Alexandra Spalato" }, void 0, !1, {
         fileName: "app/routes/$.jsx",
         lineNumber: 21,
         columnNumber: 13
@@ -367,7 +396,7 @@ function Page2() {
         lineNumber: 20,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(MainMenu_default, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(Header_default, {}, void 0, !1, {
         fileName: "app/routes/$.jsx",
         lineNumber: 23,
         columnNumber: 11
@@ -381,7 +410,7 @@ function Page2() {
       lineNumber: 18,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(import_react21.StoryblokComponent, { blok: story.content }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react22.StoryblokComponent, { blok: story.content }, void 0, !1, {
       fileName: "app/routes/$.jsx",
       lineNumber: 26,
       columnNumber: 7
@@ -393,7 +422,7 @@ function Page2() {
   }, this);
 }
 var loader2 = async ({ params }) => {
-  let slug = params["*"] ?? "home", sbApi = (0, import_react21.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await (0, import_react21.getStoryblokApi)().get(`cdn/stories/${slug}`, {
+  let slug = params["*"] ?? "home", sbApi = (0, import_react22.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await (0, import_react22.getStoryblokApi)().get(`cdn/stories/${slug}`, {
     version: "draft",
     resolve_relations: resolveRelations
   }), { data: blog } = await sbApi.get("cdn/stories", {
@@ -412,7 +441,7 @@ var loader2 = async ({ params }) => {
 };
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "eed1ec16", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-EJSKEIHM.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-3TIUQRSP.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-WYH2OOS7.js", imports: ["/build/_shared/chunk-OLZE3XLW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-EED1EC16.js" };
+var assets_manifest_default = { version: "3db90a14", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-EJSKEIHM.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-QGBJTHWO.js", imports: ["/build/_shared/chunk-EA2BBVXV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-SWTX5OLI.js", imports: ["/build/_shared/chunk-EA2BBVXV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-3DB90A14.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
