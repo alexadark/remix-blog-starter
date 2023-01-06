@@ -4,7 +4,7 @@ import { useLoaderData, Link } from "@remix-run/react";
 const AllPosts = ({ blok }) => {
   const { posts } = useLoaderData();
   return (
-    <main {...storyblokEditable(blok)} key={blok._uid}>
+    <div {...storyblokEditable(blok)} key={blok._uid}>
       <h1>{blok.headline}</h1>
       {posts?.map((p) => {
         const post = p.content;
@@ -17,7 +17,7 @@ const AllPosts = ({ blok }) => {
           </article>
         );
       })}
-    </main>
+    </div>
   );
 };
 
