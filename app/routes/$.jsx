@@ -15,11 +15,13 @@ export default function Page() {
   story = useStoryblokState(story);
 
   return (
-    <main>
+    <div className="flex flex-col justify-between min-h-screen">
       <Header />
-      <StoryblokComponent blok={story.content} />
+      <main>
+        <StoryblokComponent blok={story.content} />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
 

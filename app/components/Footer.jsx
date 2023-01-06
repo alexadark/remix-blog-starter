@@ -7,13 +7,14 @@ const Footer = () => {
   const { footerText, footerColumns } = useLoaderData();
 
   return (
-    <footer>
-      <h3 className="text-2xl font-bold text-black">Footer</h3>
-      <div className="text-center">{render(footerText)}</div>
-      {footerColumns.map((column) => (
-        <StoryblokComponent blok={column} key={column._uid} />
-      ))}
-      <SocialShare />
+    <footer className="py-10 text-white bg-black">
+      <div className="center-container">
+        <div className="text-center">{render(footerText)}</div>
+        {footerColumns.map((column) => (
+          <StoryblokComponent blok={column} key={column._uid} />
+        ))}
+        <SocialShare />
+      </div>
     </footer>
   );
 };

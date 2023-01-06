@@ -10,18 +10,13 @@ const MenuItem = ({ blok }) => {
         <NavLink
           key={_uid}
           to={`/${link.cached_url}`}
-          className="mx-5 text-gray-500 hover:text-red-900"
           {...storyblokEditable(blok)}
+          className="menu-item"
         >
           {label}
         </NavLink>
       ) : (
-        <a
-          href={link.url}
-          target={link.target}
-          className="mx-5 text-gray-500 hover:text-gray-900 blok"
-          {...storyblokEditable(blok)}
-        >
+        <a href={link.url} target={link.target} {...storyblokEditable(blok)}>
           {label}
         </a>
       )}

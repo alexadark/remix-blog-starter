@@ -3,10 +3,10 @@ import MainMenu from "./MainMenu";
 
 const Header = () => {
   return (
-    <header>
-      <div className="flex justify-between align-center">
+    <header className="py-4 text-white bg-black">
+      <div className="flex justify-between center-container">
         <Link to="/">
-          <h1 className="text-3xl font-bold">Alexandra Spalato</h1>
+          <h1 className="text-3xl font-bold">My Blog</h1>
         </Link>
         <MainMenu />
       </div>

@@ -56,7 +56,7 @@ __export(root_exports, {
 var import_react26 = require("@remix-run/react"), import_node = require("@remix-run/node");
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-WSJE4P3P.css";
+var app_default = "/build/_assets/app-LN3CMMIE.css";
 
 // app/root.jsx
 var import_react27 = require("@storyblok/react");
@@ -134,8 +134,16 @@ var import_react4 = require("@storyblok/react"), import_storyblok_rich_text_reac
 
 // app/storyblok/Content.jsx
 var import_react7 = require("@storyblok/react"), import_storyblok_rich_text_react_renderer2 = require("storyblok-rich-text-react-renderer"), import_react8 = require("react"), Content = ({ blok }) => {
-  let { _uid, text, button } = blok;
-  return /* @__PURE__ */ (0, import_react8.createElement)("div", { ...(0, import_react7.storyblokEditable)(blok), key: _uid }, (0, import_storyblok_rich_text_react_renderer2.render)(text));
+  let { _uid, text } = blok;
+  return /* @__PURE__ */ (0, import_react8.createElement)(
+    "div",
+    {
+      ...(0, import_react7.storyblokEditable)(blok),
+      key: _uid,
+      className: "prose center-container"
+    },
+    (0, import_storyblok_rich_text_react_renderer2.render)(text)
+  );
 }, Content_default = Content;
 
 // app/storyblok/LastPosts.jsx
@@ -144,7 +152,7 @@ var import_react9 = require("@storyblok/react"), import_react10 = require("@remi
   let { _uid, headline } = blok, { posts, story } = (0, import_react10.useLoaderData)(), numberOfPosts = (_b = (_a = story.content.body) == null ? void 0 : _a.find(
     (item) => item.component === "last-posts"
   )) == null ? void 0 : _b.number_of_posts, lastPosts = posts.slice(0, numberOfPosts);
-  return /* @__PURE__ */ (0, import_react11.createElement)("div", { ...(0, import_react9.storyblokEditable)(blok), key: _uid }, /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { children: headline }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_react11.createElement)("div", { ...(0, import_react9.storyblokEditable)(blok), key: _uid, className: "center-container" }, /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { children: headline }, void 0, !1, {
     fileName: "app/storyblok/LastPosts.jsx",
     lineNumber: 14,
     columnNumber: 7
@@ -166,8 +174,8 @@ var import_react12 = require("@remix-run/react"), import_react13 = require("@sto
     import_react12.NavLink,
     {
       to: `/${link.cached_url}`,
-      className: "mx-5 text-gray-500 hover:text-red-900",
       ...(0, import_react13.storyblokEditable)(blok),
+      className: "menu-item",
       children: label
     },
     _uid,
@@ -178,24 +186,11 @@ var import_react12 = require("@remix-run/react"), import_react13 = require("@sto
       columnNumber: 9
     },
     this
-  ) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
-    "a",
-    {
-      href: link.url,
-      target: link.target,
-      className: "mx-5 text-gray-500 hover:text-gray-900 blok",
-      ...(0, import_react13.storyblokEditable)(blok),
-      children: label
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/storyblok/MenuItem.jsx",
-      lineNumber: 19,
-      columnNumber: 9
-    },
-    this
-  ) }, void 0, !1, {
+  ) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("a", { href: link.url, target: link.target, ...(0, import_react13.storyblokEditable)(blok), children: label }, void 0, !1, {
+    fileName: "app/storyblok/MenuItem.jsx",
+    lineNumber: 19,
+    columnNumber: 9
+  }, this) }, void 0, !1, {
     fileName: "app/storyblok/MenuItem.jsx",
     lineNumber: 8,
     columnNumber: 5
@@ -487,7 +482,7 @@ var import_react30 = require("@remix-run/react");
 // app/components/MainMenu.jsx
 var import_react28 = require("@storyblok/react"), import_react29 = require("@remix-run/react"), import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), MainMenu = () => {
   let { headerNav: nav } = (0, import_react29.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex", ...(0, import_react28.storyblokEditable)(nav), children: nav.map((nestedBlok) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react28.StoryblokComponent, { blok: nestedBlok }, nestedBlok._uid, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "h-menu", ...(0, import_react28.storyblokEditable)(nav), children: nav.map((nestedBlok) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react28.StoryblokComponent, { blok: nestedBlok }, nestedBlok._uid, !1, {
     fileName: "app/components/MainMenu.jsx",
     lineNumber: 10,
     columnNumber: 9
@@ -499,8 +494,8 @@ var import_react28 = require("@storyblok/react"), import_react29 = require("@rem
 }, MainMenu_default = MainMenu;
 
 // app/components/Header.jsx
-var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), Header = () => /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("header", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex justify-between align-center", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react30.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h1", { className: "text-3xl font-bold", children: "Alexandra Spalato" }, void 0, !1, {
+var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), Header = () => /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("header", { className: "py-4 text-white bg-black", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex justify-between center-container", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react30.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h1", { className: "text-3xl font-bold", children: "My Blog" }, void 0, !1, {
     fileName: "app/components/Header.jsx",
     lineNumber: 9,
     columnNumber: 11
@@ -545,28 +540,27 @@ var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), SocialShare = (
 // app/components/Footer.jsx
 var import_react33 = require("@storyblok/react"), import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), Footer = () => {
   let { footerText, footerColumns } = (0, import_react32.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("footer", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("h3", { className: "text-2xl font-bold text-black", children: "Footer" }, void 0, !1, {
-      fileName: "app/components/Footer.jsx",
-      lineNumber: 11,
-      columnNumber: 7
-    }, this),
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("footer", { className: "py-10 text-white bg-black", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "center-container", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "text-center", children: (0, import_storyblok_rich_text_react_renderer3.render)(footerText) }, void 0, !1, {
       fileName: "app/components/Footer.jsx",
       lineNumber: 12,
-      columnNumber: 7
+      columnNumber: 9
     }, this),
     footerColumns.map((column) => /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(import_react33.StoryblokComponent, { blok: column }, column._uid, !1, {
       fileName: "app/components/Footer.jsx",
       lineNumber: 14,
-      columnNumber: 9
+      columnNumber: 11
     }, this)),
     /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(SocialShare_default, {}, void 0, !1, {
       fileName: "app/components/Footer.jsx",
       lineNumber: 16,
-      columnNumber: 7
+      columnNumber: 9
     }, this)
   ] }, void 0, !0, {
+    fileName: "app/components/Footer.jsx",
+    lineNumber: 11,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
     fileName: "app/components/Footer.jsx",
     lineNumber: 10,
     columnNumber: 5
@@ -577,20 +571,24 @@ var import_react33 = require("@storyblok/react"), import_jsx_dev_runtime15 = req
 var import_jsx_dev_runtime16 = require("react/jsx-dev-runtime");
 function Page2() {
   let { story } = (0, import_react34.useLoaderData)();
-  return story = (0, import_react35.useStoryblokState)(story), /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("main", { children: [
+  return story = (0, import_react35.useStoryblokState)(story), /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "flex flex-col justify-between min-h-screen", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Header_default, {}, void 0, !1, {
       fileName: "app/routes/$.jsx",
       lineNumber: 19,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react35.StoryblokComponent, { blok: story.content }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("main", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react35.StoryblokComponent, { blok: story.content }, void 0, !1, {
+      fileName: "app/routes/$.jsx",
+      lineNumber: 21,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
       fileName: "app/routes/$.jsx",
       lineNumber: 20,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Footer_default, {}, void 0, !1, {
       fileName: "app/routes/$.jsx",
-      lineNumber: 21,
+      lineNumber: 23,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
@@ -644,7 +642,7 @@ var loader2 = async ({ params }) => {
 };
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "c5aa9f0d", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-LUU5WKI2.js", imports: ["/build/_shared/chunk-ZMQ4IDKZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-SMTFQ2CQ.js", imports: ["/build/_shared/chunk-DEFJD37M.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-25NCORX6.js", imports: ["/build/_shared/chunk-DEFJD37M.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-C5AA9F0D.js" };
+var assets_manifest_default = { version: "abc54033", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-34WKV6HO.js", imports: ["/build/_shared/chunk-ZMQ4IDKZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-L7YVKJTK.js", imports: ["/build/_shared/chunk-D27EKU3U.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-GHKSJKDF.js", imports: ["/build/_shared/chunk-D27EKU3U.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-ABC54033.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

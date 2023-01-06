@@ -5,7 +5,7 @@ const MainMenu = () => {
   let { headerNav: nav } = useLoaderData();
 
   return (
-    <div className="flex" {...storyblokEditable(nav)}>
+    <div className="h-menu" {...storyblokEditable(nav)}>
       {nav.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
