@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
+import { json } from "@remix-run/node";
 
 import styles from "./styles/app.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
@@ -19,7 +20,8 @@ import MenuItem from "./storyblok/MenuItem";
 import AllPosts from "./storyblok/AllPosts";
 import AllCategories from "./storyblok/AllCategories";
 import Category from "./storyblok/Category";
-import { json } from "@remix-run/node";
+import SocialItem from "./storyblok/SocialItem";
+import FooterColumn from "./storyblok/FooterColumn";
 
 const isServer = typeof window === "undefined";
 
@@ -44,6 +46,8 @@ const components = {
   "all-posts": AllPosts,
   "all-categories": AllCategories,
   category: Category,
+  "social-item": SocialItem,
+  "footer-column": FooterColumn,
 };
 
 storyblokInit({

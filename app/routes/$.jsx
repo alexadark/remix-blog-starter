@@ -8,6 +8,7 @@ import {
 } from "@storyblok/react";
 
 import Header from "~/components/Header";
+import Footer from "~/components/Footer";
 
 export default function Page() {
   let { story } = useLoaderData();
@@ -17,6 +18,7 @@ export default function Page() {
     <main>
       <Header />
       <StoryblokComponent blok={story.content} />
+      <Footer />
     </main>
   );
 }
@@ -39,6 +41,18 @@ export const loader = async ({ params }) => {
     resolve_relations: resolveRelations,
   });
 
+  const { data: postsByCategory } = await sbApi.get(`cdn/stories`, {
+    version: "draft",
+    starts_with: "blog/",
+    is_startpage: false,
+    resolve_relations: resolveRelations,
+    filter_query: {
+      categories: {
+        in: "2d34ee77-e2f8-4050-af4e-8fcc7f117a44",
+      },
+    },
+  });
+
   const { data: category } = await sbApi.get(`cdn/stories`, {
     version: "draft",
     starts_with: "categories/",
@@ -56,7 +70,11 @@ export const loader = async ({ params }) => {
     slug: data?.story?.slug,
     fullSlug: data?.story?.full_slug,
     posts: blog?.stories,
-    config: config?.story,
+    headerNav: config?.story?.content?.header_nav,
+    socialItems: config?.story?.content?.social_items,
+    footerText: config?.story?.content?.footer_text,
+    footerColumns: config?.story?.content?.footer_columns,
     categories: category?.stories,
+    postsByCategory,
   });
 };

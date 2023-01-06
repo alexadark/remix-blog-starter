@@ -2,11 +2,11 @@ import { useLoaderData, Link } from "@remix-run/react";
 import { storyblokEditable } from "@storyblok/react";
 
 const Category = ({ blok }) => {
-  const { slug, posts } = useLoaderData();
-
+  const { slug, posts, postsByCategory } = useLoaderData();
+  console.log("postsByCategory", postsByCategory);
   const categoryPosts = posts.filter((p) => {
     return p.content.categories.map((c) => c.slug).includes(slug);
-    //TODO: solve the pagination problem, as actually we can only serach trough the first page of posts
+    //TODO: solve the filter query
   });
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>
