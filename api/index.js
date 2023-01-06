@@ -56,7 +56,7 @@ __export(root_exports, {
 var import_react26 = require("@remix-run/react"), import_node = require("@remix-run/node");
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-LN3CMMIE.css";
+var app_default = "/build/_assets/app-H37SYYZO.css";
 
 // app/root.jsx
 var import_react27 = require("@storyblok/react");
@@ -186,11 +186,24 @@ var import_react12 = require("@remix-run/react"), import_react13 = require("@sto
       columnNumber: 9
     },
     this
-  ) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("a", { href: link.url, target: link.target, ...(0, import_react13.storyblokEditable)(blok), children: label }, void 0, !1, {
-    fileName: "app/storyblok/MenuItem.jsx",
-    lineNumber: 19,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
+  ) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+    "a",
+    {
+      href: link.url,
+      target: link.target,
+      ...(0, import_react13.storyblokEditable)(blok),
+      className: "menu-item",
+      children: label
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/storyblok/MenuItem.jsx",
+      lineNumber: 19,
+      columnNumber: 9
+    },
+    this
+  ) }, void 0, !1, {
     fileName: "app/storyblok/MenuItem.jsx",
     lineNumber: 8,
     columnNumber: 5
@@ -608,14 +621,14 @@ var loader2 = async ({ params }) => {
     per_page: 2,
     is_startpage: !1,
     resolve_relations: resolveRelations
-  }), { data: postsByCategory } = await sbApi.get("cdn/stories", {
+  }), { data: postsByCategory } = await sbApi.get("cdn/stories/", {
     version: "draft",
     starts_with: "blog/",
     is_startpage: !1,
     resolve_relations: resolveRelations,
     filter_query: {
       categories: {
-        in: "2d34ee77-e2f8-4050-af4e-8fcc7f117a44"
+        in_array: params.uuid
       }
     }
   }), { data: category } = await sbApi.get("cdn/stories", {
@@ -642,7 +655,7 @@ var loader2 = async ({ params }) => {
 };
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "abc54033", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-34WKV6HO.js", imports: ["/build/_shared/chunk-ZMQ4IDKZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-L7YVKJTK.js", imports: ["/build/_shared/chunk-D27EKU3U.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-GHKSJKDF.js", imports: ["/build/_shared/chunk-D27EKU3U.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-ABC54033.js" };
+var assets_manifest_default = { version: "f99aaaf1", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GUCCHCQQ.js", imports: ["/build/_shared/chunk-ZMQ4IDKZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-ROZ3FMQL.js", imports: ["/build/_shared/chunk-N7BDYOCG.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-XQM244HW.js", imports: ["/build/_shared/chunk-N7BDYOCG.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-F99AAAF1.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

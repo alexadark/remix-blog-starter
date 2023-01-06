@@ -16,7 +16,12 @@ const MenuItem = ({ blok }) => {
           {label}
         </NavLink>
       ) : (
-        <a href={link.url} target={link.target} {...storyblokEditable(blok)}>
+        <a
+          href={link.url}
+          target={link.target}
+          {...storyblokEditable(blok)}
+          className="menu-item"
+        >
           {label}
         </a>
       )}

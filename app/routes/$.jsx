@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { useLoaderData, Link } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
 import {
   getStoryblokApi,
@@ -43,14 +43,15 @@ export const loader = async ({ params }) => {
     resolve_relations: resolveRelations,
   });
 
-  const { data: postsByCategory } = await sbApi.get(`cdn/stories`, {
+  const { data: postsByCategory } = await sbApi.get(`cdn/stories/`, {
     version: "draft",
     starts_with: "blog/",
     is_startpage: false,
     resolve_relations: resolveRelations,
     filter_query: {
       categories: {
-        in: "2d34ee77-e2f8-4050-af4e-8fcc7f117a44",
+        // in_array: "2d34ee77-e2f8-4050-af4e-8fcc7f117a44",
+        in_array: params.uuid,
       },
     },
   });
