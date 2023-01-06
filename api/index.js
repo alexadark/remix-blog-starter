@@ -207,28 +207,28 @@ var import_react14 = require("@storyblok/react"), import_react15 = require("@rem
   let { posts } = (0, import_react15.useLoaderData)();
   return /* @__PURE__ */ (0, import_react16.createElement)("div", { ...(0, import_react14.storyblokEditable)(blok), key: blok._uid }, /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { children: blok.headline }, void 0, !1, {
     fileName: "app/storyblok/AllPosts.jsx",
-    lineNumber: 8,
+    lineNumber: 9,
     columnNumber: 7
   }, this), posts == null ? void 0 : posts.map((p) => {
     let post = p.content;
     return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("article", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react15.Link, { to: `/blog/${p.slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { children: post.headline }, void 0, !1, {
         fileName: "app/storyblok/AllPosts.jsx",
-        lineNumber: 14,
+        lineNumber: 15,
         columnNumber: 15
       }, this) }, void 0, !1, {
         fileName: "app/storyblok/AllPosts.jsx",
-        lineNumber: 13,
+        lineNumber: 14,
         columnNumber: 13
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: post.teaser }, void 0, !1, {
         fileName: "app/storyblok/AllPosts.jsx",
-        lineNumber: 16,
+        lineNumber: 17,
         columnNumber: 13
       }, this)
     ] }, post._uid, !0, {
       fileName: "app/storyblok/AllPosts.jsx",
-      lineNumber: 12,
+      lineNumber: 13,
       columnNumber: 11
     }, this);
   }));
@@ -293,30 +293,30 @@ var import_react20 = require("@remix-run/react"), import_react21 = require("@sto
     blok.headline
   ] }, void 0, !0, {
     fileName: "app/storyblok/Category.jsx",
-    lineNumber: 12,
+    lineNumber: 13,
     columnNumber: 7
   }, this), blok.description && /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { children: blok.description }, void 0, !1, {
     fileName: "app/storyblok/Category.jsx",
-    lineNumber: 13,
+    lineNumber: 14,
     columnNumber: 28
   }, this), categoryPosts.map((p) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("article", { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react20.Link, { to: `/blog/${p.slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h2", { children: p.content.headline }, void 0, !1, {
       fileName: "app/storyblok/Category.jsx",
-      lineNumber: 18,
+      lineNumber: 19,
       columnNumber: 15
     }, this) }, void 0, !1, {
       fileName: "app/storyblok/Category.jsx",
-      lineNumber: 17,
+      lineNumber: 18,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: p.content.teaser }, void 0, !1, {
       fileName: "app/storyblok/Category.jsx",
-      lineNumber: 20,
+      lineNumber: 21,
       columnNumber: 13
     }, this)
   ] }, p._uid, !0, {
     fileName: "app/storyblok/Category.jsx",
-    lineNumber: 16,
+    lineNumber: 17,
     columnNumber: 11
   }, this)));
 }, Category_default = Category;
@@ -506,6 +506,7 @@ var loader2 = async ({ params }) => {
   }), { data: blog } = await sbApi.get("cdn/stories", {
     version: "draft",
     starts_with: "blog/",
+    per_page: 2,
     is_startpage: !1,
     resolve_relations: resolveRelations
   }), { data: category } = await sbApi.get("cdn/stories", {
@@ -528,7 +529,7 @@ var loader2 = async ({ params }) => {
 };
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "4365c4e3", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-M5RDHWWC.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-JMSMPLML.js", imports: ["/build/_shared/chunk-NG6HUXIW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-6ARVRSXS.js", imports: ["/build/_shared/chunk-NG6HUXIW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-4365C4E3.js" };
+var assets_manifest_default = { version: "67250f47", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-7THJDDM6.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-LUHB67HH.js", imports: ["/build/_shared/chunk-6NKHCVIP.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-YQJURKA3.js", imports: ["/build/_shared/chunk-6NKHCVIP.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-67250F47.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

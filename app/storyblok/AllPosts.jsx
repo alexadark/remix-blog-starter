@@ -3,6 +3,7 @@ import { useLoaderData, Link } from "@remix-run/react";
 
 const AllPosts = ({ blok }) => {
   const { posts } = useLoaderData();
+
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>
       <h1>{blok.headline}</h1>

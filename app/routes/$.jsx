@@ -34,6 +34,7 @@ export const loader = async ({ params }) => {
   const { data: blog } = await sbApi.get(`cdn/stories`, {
     version: "draft",
     starts_with: "blog/",
+    per_page: 2,
     is_startpage: false,
     resolve_relations: resolveRelations,
   });

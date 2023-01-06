@@ -6,6 +6,7 @@ const Category = ({ blok }) => {
 
   const categoryPosts = posts.filter((p) => {
     return p.content.categories.map((c) => c.slug).includes(slug);
+    //TODO: solve the pagination problem, as actually we can only serach trough the first page of posts
   });
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>
