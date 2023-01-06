@@ -51,6 +51,9 @@ export const loader = async ({ params }) => {
 
   return json({
     story: data?.story,
+    publishDate: data?.story?.published_at,
+    slug: data?.story?.slug,
+    fullSlug: data?.story?.full_slug,
     posts: blog?.stories,
     config: config?.story,
     categories: category?.stories,

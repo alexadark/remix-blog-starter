@@ -1,13 +1,18 @@
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
 import { useLoaderData } from "@remix-run/react";
-
-const Post = () => {
-  const { story } = useLoaderData();
-  const blok = story.content;
-  const { _uid, headline, content, categories, image, tags, author } = blok;
+// import Date from "~/components/Date";
+import { format } from "date-fns";
+//TODO fix date component
+const Post = ({ blok }) => {
+  const { publishDate } = useLoaderData();
+  const { headline, content, categories, image, tags, author } = blok;
   return (
     <article {...storyblokEditable(blok)} key={blok._uid}>
+      <div>
+        {/* <Date date={publishDate} /> */}
+        {format(new Date(publishDate), "MMMM dd, yyyy")}
+      </div>
       <img
         src={`${image.filename}/m/1200x400/smart/filters:grayscale():quality(60)/`}
         alt=""

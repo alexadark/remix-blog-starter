@@ -1,14 +1,12 @@
 import { useLoaderData, Link } from "@remix-run/react";
 import { storyblokEditable } from "@storyblok/react";
 
-const Category = () => {
-  const { story, posts } = useLoaderData();
-  const blok = story.content;
+const Category = ({ blok }) => {
+  const { slug, posts } = useLoaderData();
 
   const categoryPosts = posts.filter((p) => {
-    return p.content.categories.map((c) => c.slug).includes(story.slug);
+    return p.content.categories.map((c) => c.slug).includes(slug);
   });
-
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>
       <h1>Posts for: {blok.headline}</h1>
