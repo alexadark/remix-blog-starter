@@ -50,8 +50,7 @@ export const loader = async ({ params }) => {
     resolve_relations: resolveRelations,
     filter_query: {
       categories: {
-        // in_array: "2d34ee77-e2f8-4050-af4e-8fcc7f117a44",
-        in_array: params.uuid,
+        in_array: data.story.uuid,
       },
     },
   });
@@ -78,6 +77,6 @@ export const loader = async ({ params }) => {
     footerText: config?.story?.content?.footer_text,
     footerColumns: config?.story?.content?.footer_columns,
     categories: category?.stories,
-    postsByCategory,
+    postsByCategory: postsByCategory?.stories,
   });
 };
