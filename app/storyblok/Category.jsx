@@ -2,17 +2,12 @@ import { useLoaderData, Link } from "@remix-run/react";
 import { storyblokEditable } from "@storyblok/react";
 
 const Category = ({ blok }) => {
-  // const { slug, posts, postsByCategory } = useLoaderData();
-  // console.log("postsByCategory", postsByCategory);
-  // const categoryPosts = posts.filter((p) => {
-  //   return p.content.categories.map((c) => c.slug).includes(slug);
-  //   //TODO: solve the filter query
-  // });
+  const { postsByCategory } = useLoaderData();
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>
       <h1>Posts for: {blok.headline}</h1>
       {blok.description && <p>{blok.description}</p>}
-      {/* {categoryPosts.map((p) => {
+      {postsByCategory.map((p) => {
         return (
           <article key={p._uid}>
             <Link to={`/blog/${p.slug}`}>
@@ -21,7 +16,7 @@ const Category = ({ blok }) => {
             <div>{p.content.teaser}</div>
           </article>
         );
-      })} */}
+      })}
     </div>
   );
 };

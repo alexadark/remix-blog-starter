@@ -3,7 +3,6 @@ import { storyblokEditable } from "@storyblok/react";
 
 const Tag = ({ blok }) => {
   const { postsByTag } = useLoaderData();
-  console.log("postsByTag", postsByTag);
 
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>

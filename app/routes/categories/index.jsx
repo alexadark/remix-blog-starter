@@ -4,6 +4,7 @@ import { getStoryblokApi } from "@storyblok/react";
 
 export const loader = async () => {
   const sbApi = getStoryblokApi();
+
   const { data } = await sbApi.get(`cdn/stories/categories`, {
     version: "draft",
   });
