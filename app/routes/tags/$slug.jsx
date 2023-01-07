@@ -4,7 +4,7 @@ import { useStoryblokContent } from "~/hooks/useStoryblokContent";
 import { getStoryblokApi } from "@storyblok/react";
 
 export const loader = async ({ params }) => {
-  const { slug, uuid } = params;
+  const { slug } = params;
   const sbApi = getStoryblokApi();
 
   const resolveRelations = ["post.categories", "post.tags", "post.author"];
@@ -20,7 +20,7 @@ export const loader = async ({ params }) => {
     resolve_relations: resolveRelations,
     filter_query: {
       tags: {
-        in_array: uuid,
+        in_array: data.story.uuid,
       },
     },
   });
@@ -28,7 +28,6 @@ export const loader = async ({ params }) => {
   return json({
     story: data?.story,
     postsByTag: postsByTag?.stories,
-    params,
   });
 };
 

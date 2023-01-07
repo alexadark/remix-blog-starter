@@ -28,7 +28,7 @@ const Post = ({ blok }) => {
         ))}
         <h3>Tags</h3>
         {tags.map((t) => (
-          <Link to={`/tags/${t.slug}/${t.uuid}`} key={t._uid}>
+          <Link to={`/tags/${t.slug}`} key={t._uid}>
             <span>{t.name}</span>
           </Link>
         ))}
