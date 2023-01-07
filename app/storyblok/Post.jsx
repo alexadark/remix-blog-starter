@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import { render } from "storyblok-rich-text-react-renderer";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, Link } from "@remix-run/react";
 // import Date from "~/components/Date";
 import { format } from "date-fns";
 //TODO fix date component
@@ -22,11 +22,15 @@ const Post = ({ blok }) => {
       <div>
         <h3>Categories</h3>
         {categories.map((c) => (
-          <span key={c._uid}>{c.name}</span>
+          <Link to={`/categories/${c.slug}`} key={c._uid}>
+            <span>{c.name}</span>
+          </Link>
         ))}
         <h3>Tags</h3>
         {tags.map((t) => (
-          <span key={t._uid}>{t.name}</span>
+          <Link to={`/tags/${t.slug}/${t.uuid}`} key={t._uid}>
+            <span>{t.name}</span>
+          </Link>
         ))}
       </div>
       <h3>Author</h3>
