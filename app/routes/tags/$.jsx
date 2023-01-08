@@ -8,7 +8,7 @@ import {
 } from "@storyblok/react";
 
 export const loader = async ({ params }) => {
-  const { slug } = params;
+  let slug = params["*"] ?? "home";
 
   const resolveRelations = ["post.categories", "post.tags", "post.author"];
   const sbApi = getStoryblokApi();

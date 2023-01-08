@@ -18,7 +18,6 @@ export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
 
   const sbApi = getStoryblokApi();
-  console.log("slug", slug, "catsSlug", catsSlug, "tagsSlug", tagsSlug);
 
   const resolveRelations = ["post.categories", "post.tags", "post.author"];
 
