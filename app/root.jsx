@@ -10,7 +10,10 @@ import {
 import { json } from "@remix-run/node";
 
 import styles from "./styles/app.css";
-import { storyblokInit, apiPlugin } from "@storyblok/react";
+import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
+
+import Header from "~/components/Header";
+import Footer from "~/components/Footer";
 
 import Page from "./storyblok/Page";
 import Post from "./storyblok/Post";
@@ -30,10 +33,19 @@ const accessToken = isServer
   : window.env.STORYBLOK_PREVIEW_TOKEN;
 
 export const loader = async () => {
+  const sbApi = getStoryblokApi();
+  const { data: config } = await sbApi.get(`cdn/stories/config`, {
+    version: "draft",
+    resolve_links: "url",
+  });
   return json({
     env: {
       STORYBLOK_PREVIEW_TOKEN: process.env.STORYBLOK_PREVIEW_TOKEN,
     },
+    headerNav: config?.story?.content?.header_nav,
+    socialItems: config?.story?.content?.social_items,
+    footerText: config?.story?.content?.footer_text,
+    footerColumns: config?.story?.content?.footer_columns,
   });
 };
 
@@ -71,7 +83,15 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <div className="flex flex-col justify-between min-h-screen">
+          <div>
+            <Header />
+            <main>
+              <Outlet />
+            </main>
+          </div>
+          <Footer />
+        </div>
         <script
           dangerouslySetInnerHTML={{
             __html: `window.env = ${JSON.stringify(env)}`,
