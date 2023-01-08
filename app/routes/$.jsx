@@ -16,19 +16,16 @@ export default function Page() {
 
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
-  let catsSlug = params["*"] === "categories/" ? "categories/home" : null;
-  let tagsSlug = params["*"] === "tags/" ? "tags/home" : null;
+
   const sbApi = getStoryblokApi();
+  console.log("slug", slug, "catsSlug", catsSlug, "tagsSlug", tagsSlug);
 
   const resolveRelations = ["post.categories", "post.tags", "post.author"];
 
-  const { data } = await getStoryblokApi().get(
-    `cdn/stories/${catsSlug ? catsSlug : tagsSlug ? tagsSlug : slug}`,
-    {
-      version: "draft",
-      resolve_relations: resolveRelations,
-    }
-  );
+  const { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, {
+    version: "draft",
+    resolve_relations: resolveRelations,
+  });
   const { data: blog } = await sbApi.get(`cdn/stories`, {
     version: "draft",
     starts_with: "blog/",

@@ -23,6 +23,7 @@ import MenuItem from "./storyblok/MenuItem";
 import AllPosts from "./storyblok/AllPosts";
 import AllCategories from "./storyblok/AllCategories";
 import Category from "./storyblok/Category";
+import Tag from "./storyblok/Tag";
 import SocialItem from "./storyblok/SocialItem";
 import FooterColumn from "./storyblok/FooterColumn";
 
@@ -58,6 +59,7 @@ const components = {
   "all-posts": AllPosts,
   "all-categories": AllCategories,
   category: Category,
+  tag: Tag,
   "social-item": SocialItem,
   "footer-column": FooterColumn,
 };

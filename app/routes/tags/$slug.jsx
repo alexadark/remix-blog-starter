@@ -39,7 +39,12 @@ const TagPage = () => {
   let { story } = useLoaderData();
   story = useStoryblokState(story);
 
-  return <StoryblokComponent blok={story.content} />;
+  return (
+    <div>
+      <h1>Test</h1>
+      <StoryblokComponent blok={story.content} />
+    </div>
+  );
 };
 
 export default TagPage;
