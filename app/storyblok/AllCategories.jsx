@@ -13,7 +13,7 @@ const AllCategories = ({ blok }) => {
             const category = c.content;
             return (
               <article key={category._uid}>
-                <Link to={`/categories/${c.slug}`}>
+                <Link to={`/${c.full_slug}`}>
                   <img
                     className=""
                     src={`${category.image.filename}/m/400x200/smart/filters:quality(60)/`}

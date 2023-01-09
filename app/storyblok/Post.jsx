@@ -22,13 +22,13 @@ const Post = ({ blok }) => {
       <div>
         <h3>Categories</h3>
         {categories.map((c) => (
-          <Link to={`/categories/${c.slug}`} key={c._uid}>
+          <Link to={`/${c.full_slug}`} key={c._uid}>
             <span>{c.name}</span>
           </Link>
         ))}
         <h3>Tags</h3>
         {tags.map((t) => (
-          <Link to={`/tags/${t.slug}`} key={t._uid}>
+          <Link to={`/${t.full_slug}`} key={t._uid}>
             <span>{t.name}</span>
           </Link>
         ))}

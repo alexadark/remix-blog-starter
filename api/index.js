@@ -1,11 +1,7 @@
-var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf, __hasOwnProp = Object.prototype.hasOwnProperty;
-var __commonJS = (cb, mod) => function() {
-  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-};
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: !0 });
@@ -15,17 +11,7 @@ var __export = (target, all) => {
       !__hasOwnProp.call(to, key) && key !== except && __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: !0 }) : target,
-  mod
-)), __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: !0 }), mod);
-
-// app/routes/authors/$.jsx
-var require__ = __commonJS({
-  "app/routes/authors/$.jsx"() {
-    "use strict";
-  }
-});
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: !0 }), mod);
 
 // <stdin>
 var stdin_exports = {};
@@ -229,7 +215,7 @@ var import_react12 = require("@storyblok/react"), import_storyblok_rich_text_rea
       lineNumber: 23,
       columnNumber: 9
     }, this),
-    categories.map((c) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react13.Link, { to: `/categories/${c.slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("span", { children: c.name }, void 0, !1, {
+    categories.map((c) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react13.Link, { to: `/${c.full_slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("span", { children: c.name }, void 0, !1, {
       fileName: "app/storyblok/Post.jsx",
       lineNumber: 26,
       columnNumber: 13
@@ -243,7 +229,7 @@ var import_react12 = require("@storyblok/react"), import_storyblok_rich_text_rea
       lineNumber: 29,
       columnNumber: 9
     }, this),
-    tags.map((t) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react13.Link, { to: `/tags/${t.slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("span", { children: t.name }, void 0, !1, {
+    tags.map((t) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react13.Link, { to: `/${t.full_slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("span", { children: t.name }, void 0, !1, {
       fileName: "app/storyblok/Post.jsx",
       lineNumber: 32,
       columnNumber: 13
@@ -283,21 +269,18 @@ var import_react15 = require("@storyblok/react"), import_storyblok_rich_text_rea
 
 // app/storyblok/LastPosts.jsx
 var import_react17 = require("@storyblok/react"), import_react18 = require("@remix-run/react"), import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), import_react19 = require("react"), LastPosts = ({ blok }) => {
-  var _a, _b;
-  let { _uid, headline } = blok, { posts, story } = (0, import_react18.useLoaderData)(), numberOfPosts = (_b = (_a = story.content.body) == null ? void 0 : _a.find(
-    (item) => item.component === "last-posts"
-  )) == null ? void 0 : _b.number_of_posts, lastPosts = posts.slice(0, numberOfPosts);
+  let { _uid, headline } = blok, { lastPosts } = (0, import_react18.useLoaderData)();
   return /* @__PURE__ */ (0, import_react19.createElement)("div", { ...(0, import_react17.storyblokEditable)(blok), key: _uid, className: "center-container" }, /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { children: headline }, void 0, !1, {
     fileName: "app/storyblok/LastPosts.jsx",
-    lineNumber: 14,
+    lineNumber: 10,
     columnNumber: 7
-  }, this), lastPosts.map((post) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { children: post.content.headline }, void 0, !1, {
+  }, this), lastPosts.map((post) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(import_react18.Link, { to: `/${post.full_slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { children: post.content.headline }, void 0, !1, {
     fileName: "app/storyblok/LastPosts.jsx",
-    lineNumber: 18,
+    lineNumber: 14,
     columnNumber: 13
   }, this) }, post.content._uid, !1, {
     fileName: "app/storyblok/LastPosts.jsx",
-    lineNumber: 17,
+    lineNumber: 13,
     columnNumber: 11
   }, this)));
 }, LastPosts_default = LastPosts;
@@ -355,7 +338,7 @@ var import_react22 = require("@storyblok/react"), import_react23 = require("@rem
   }, this), posts == null ? void 0 : posts.map((p) => {
     let post = p.content;
     return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("article", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react23.Link, { to: `/blog/${p.slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h2", { children: post.headline }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react23.Link, { to: `/${p.full_slug}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h2", { children: post.headline }, void 0, !1, {
         fileName: "app/storyblok/AllPosts.jsx",
         lineNumber: 15,
         columnNumber: 15
@@ -386,7 +369,7 @@ var import_react25 = require("@storyblok/react"), import_react26 = require("@rem
     columnNumber: 7
   }, this), /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "gap-10 md:grid-cols-2", children: categories == null ? void 0 : categories.map((c) => {
     let category = c.content;
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("article", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react26.Link, { to: `/categories/${c.slug}`, children: [
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("article", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react26.Link, { to: `/${c.full_slug}`, children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
         "img",
         {
@@ -706,76 +689,83 @@ var import_react39 = require("@storyblok/react"), loader2 = async ({ params }) =
   });
 }, CategoryPage = () => useStoryblokData(), __default = CategoryPage;
 
-// server-entry-module:@remix-run/dev/server-build
-var route2 = __toESM(require__());
-
-// app/routes/dashboard.jsx
-var dashboard_exports = {};
-__export(dashboard_exports, {
-  default: () => dashboard_default
-});
-var import_react40 = require("@remix-run/react"), import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), Dashboard = () => /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { children: "Dashboard" }, void 0, !1, {
-    fileName: "app/routes/dashboard.jsx",
-    lineNumber: 6,
-    columnNumber: 7
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_react40.Outlet, {}, void 0, !1, {
-    fileName: "app/routes/dashboard.jsx",
-    lineNumber: 7,
-    columnNumber: 7
-  }, this)
-] }, void 0, !0, {
-  fileName: "app/routes/dashboard.jsx",
-  lineNumber: 5,
-  columnNumber: 5
-}, this), dashboard_default = Dashboard;
-
-// app/routes/index.jsx
-var routes_exports = {};
-__export(routes_exports, {
-  default: () => __default2,
-  loader: () => loader3
-});
-
-// app/routes/$.jsx
+// app/routes/blog/$.jsx
 var __exports2 = {};
 __export(__exports2, {
   default: () => __default2,
   loader: () => loader3
 });
-var import_node3 = require("@remix-run/node"), import_react41 = require("@remix-run/react"), import_react42 = require("@storyblok/react");
-var loader3 = async ({ params }) => {
+var import_node3 = require("@remix-run/node");
+var import_react40 = require("@storyblok/react"), loader3 = async ({ params }) => {
   var _a;
-  let slug = params["*"] ?? "home", sbApi = (0, import_react42.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await (0, import_react42.getStoryblokApi)().get(`cdn/stories/${slug}`, {
+  let slug = params["*"] ?? "home", sbApi = (0, import_react40.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await sbApi.get(`cdn/stories/blog/${slug}`, {
     version: "draft",
     resolve_relations: resolveRelations
   }), { data: blog } = await sbApi.get("cdn/stories", {
     version: "draft",
     starts_with: "blog/",
     per_page: 20,
-    is_startpage: !1,
-    resolve_relations: resolveRelations
+    is_startpage: !1
   });
   return (0, import_node3.json)({
     story: data == null ? void 0 : data.story,
     publishDate: (_a = data == null ? void 0 : data.story) == null ? void 0 : _a.published_at,
-    posts: blog == null ? void 0 : blog.stories
+    posts: blog.stories
   });
-}, RootPage = () => useStoryblokData(), __default2 = RootPage;
+}, PostPage = () => useStoryblokData(), __default2 = PostPage;
+
+// app/routes/index.jsx
+var routes_exports = {};
+__export(routes_exports, {
+  default: () => __default3,
+  loader: () => loader4
+});
+
+// app/routes/$.jsx
+var __exports3 = {};
+__export(__exports3, {
+  default: () => __default3,
+  loader: () => loader4
+});
+var import_node4 = require("@remix-run/node"), import_react41 = require("@storyblok/react");
+var loader4 = async ({ params }) => {
+  var _a, _b;
+  let slug = params["*"] ?? "home", sbApi = (0, import_react41.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await sbApi.get(`cdn/stories/${slug}`, {
+    version: "draft",
+    resolve_relations: resolveRelations
+  }), numberOfPosts = (_b = (_a = data.story.content.body) == null ? void 0 : _a.find(
+    (item) => item.component === "last-posts"
+  )) == null ? void 0 : _b.number_of_posts, { data: blog } = await sbApi.get("cdn/stories", {
+    version: "draft",
+    starts_with: "blog/",
+    per_page: 20,
+    is_startpage: !1
+  }), { data: lastPosts } = await sbApi.get("cdn/stories", {
+    version: "draft",
+    starts_with: "blog/",
+    per_page: numberOfPosts,
+    is_startpage: !1,
+    resolve_relations: resolveRelations
+  });
+  return (0, import_node4.json)({
+    story: data == null ? void 0 : data.story,
+    posts: blog.stories,
+    lastPosts: lastPosts.stories
+  });
+}, RootPage = () => useStoryblokData(), __default3 = RootPage;
 
 // app/routes/tags.jsx
 var tags_exports = {};
 __export(tags_exports, {
   default: () => tags_default
 });
-var import_react43 = require("@remix-run/react"), import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), TagsPage = () => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("h3", { children: "Tags Pages" }, void 0, !1, {
+var import_react42 = require("@remix-run/react"), import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), TagsPage = () => /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("h3", { children: "Tags Pages" }, void 0, !1, {
     fileName: "app/routes/tags.jsx",
     lineNumber: 6,
     columnNumber: 7
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_react43.Outlet, {}, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_react42.Outlet, {}, void 0, !1, {
     fileName: "app/routes/tags.jsx",
     lineNumber: 7,
     columnNumber: 7
@@ -787,13 +777,13 @@ var import_react43 = require("@remix-run/react"), import_jsx_dev_runtime19 = req
 }, this), tags_default = TagsPage;
 
 // app/routes/tags/$.jsx
-var __exports3 = {};
-__export(__exports3, {
-  default: () => __default3,
-  loader: () => loader4
+var __exports4 = {};
+__export(__exports4, {
+  default: () => __default4,
+  loader: () => loader5
 });
-var import_node4 = require("@remix-run/node"), import_react44 = require("@remix-run/react"), import_react45 = require("@storyblok/react"), import_jsx_dev_runtime20 = require("react/jsx-dev-runtime"), loader4 = async ({ params }) => {
-  let slug = params["*"] ?? "home", resolveRelations = ["post.categories", "post.tags", "post.author"], sbApi = (0, import_react45.getStoryblokApi)(), { data } = await (0, import_react45.getStoryblokApi)().get(`cdn/stories/tags/${slug}`, {
+var import_node5 = require("@remix-run/node"), import_react43 = require("@remix-run/react"), import_react44 = require("@storyblok/react"), import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), loader5 = async ({ params }) => {
+  let slug = params["*"] ?? "home", resolveRelations = ["post.categories", "post.tags", "post.author"], sbApi = (0, import_react44.getStoryblokApi)(), { data } = await (0, import_react44.getStoryblokApi)().get(`cdn/stories/tags/${slug}`, {
     version: "draft"
   }), { data: postsByTag } = await sbApi.get("cdn/stories/", {
     version: "draft",
@@ -806,19 +796,19 @@ var import_node4 = require("@remix-run/node"), import_react44 = require("@remix-
       }
     }
   });
-  return (0, import_node4.json)({
+  return (0, import_node5.json)({
     story: data == null ? void 0 : data.story,
     postsByTag: postsByTag == null ? void 0 : postsByTag.stories
   });
 }, TagPage = () => {
-  let { story } = (0, import_react44.useLoaderData)();
-  return story = (0, import_react45.useStoryblokState)(story), /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("h1", { children: "Test" }, void 0, !1, {
+  let { story } = (0, import_react43.useLoaderData)();
+  return story = (0, import_react44.useStoryblokState)(story), /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("h1", { children: "Test" }, void 0, !1, {
       fileName: "app/routes/tags/$.jsx",
       lineNumber: 44,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(import_react45.StoryblokComponent, { blok: story.content }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_react44.StoryblokComponent, { blok: story.content }, void 0, !1, {
       fileName: "app/routes/tags/$.jsx",
       lineNumber: 45,
       columnNumber: 7
@@ -828,10 +818,10 @@ var import_node4 = require("@remix-run/node"), import_react44 = require("@remix-
     lineNumber: 43,
     columnNumber: 5
   }, this);
-}, __default3 = TagPage;
+}, __default4 = TagPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "eb0b6578", entry: { module: "/build/entry.client-I7AZTU2H.js", imports: ["/build/_shared/chunk-PEK6NFJB.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-4K5JY47Z.js", imports: ["/build/_shared/chunk-SSCMHWNP.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-62BCNQIN.js", imports: ["/build/_shared/chunk-TSUJDR3D.js", "/build/_shared/chunk-4VOCAOHE.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/authors/$": { id: "routes/authors/$", parentId: "root", path: "authors/*", index: void 0, caseSensitive: void 0, module: "/build/routes/authors/$-WTQ6VRTR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-CLQ6ITJE.js", imports: ["/build/_shared/chunk-4VOCAOHE.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-P6NTZDLZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-BRWXDFF6.js", imports: ["/build/_shared/chunk-TSUJDR3D.js", "/build/_shared/chunk-4VOCAOHE.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-R5XONEXA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-W7F73IIJ.js", imports: ["/build/_shared/chunk-SSCMHWNP.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-EB0B6578.js" };
+var assets_manifest_default = { version: "daa03825", entry: { module: "/build/entry.client-A264KRU2.js", imports: ["/build/_shared/chunk-MSLNAK24.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-LCZZ646R.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UCBXE5T4.js", imports: ["/build/_shared/chunk-V7GZDU2W.js", "/build/_shared/chunk-HDGR34CI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-WMKECI5K.js", imports: ["/build/_shared/chunk-HDGR34CI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-4NOGBSOT.js", imports: ["/build/_shared/chunk-HDGR34CI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-V6HT7WBN.js", imports: ["/build/_shared/chunk-V7GZDU2W.js", "/build/_shared/chunk-HDGR34CI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-L2HAV2FD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-6OEQL6Z6.js", imports: ["/build/_shared/chunk-3SYU2WYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-DAA03825.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -851,21 +841,13 @@ var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath 
     caseSensitive: void 0,
     module: __exports
   },
-  "routes/authors/$": {
-    id: "routes/authors/$",
+  "routes/blog/$": {
+    id: "routes/blog/$",
     parentId: "root",
-    path: "authors/*",
+    path: "blog/*",
     index: void 0,
     caseSensitive: void 0,
-    module: route2
-  },
-  "routes/dashboard": {
-    id: "routes/dashboard",
-    parentId: "root",
-    path: "dashboard",
-    index: void 0,
-    caseSensitive: void 0,
-    module: dashboard_exports
+    module: __exports2
   },
   "routes/index": {
     id: "routes/index",
@@ -889,7 +871,7 @@ var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath 
     path: "*",
     index: void 0,
     caseSensitive: void 0,
-    module: __exports3
+    module: __exports4
   },
   "routes/$": {
     id: "routes/$",
@@ -897,7 +879,7 @@ var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath 
     path: "*",
     index: void 0,
     caseSensitive: void 0,
-    module: __exports2
+    module: __exports3
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

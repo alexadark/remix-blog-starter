@@ -11,7 +11,7 @@ const AllPosts = ({ blok }) => {
         const post = p.content;
         return (
           <article key={post._uid}>
-            <Link to={`/blog/${p.slug}`}>
+            <Link to={`/${p.full_slug}`}>
               <h2>{post.headline}</h2>
             </Link>
             <p>{post.teaser}</p>
