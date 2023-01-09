@@ -6,13 +6,7 @@ import {
   useStoryblokState,
   StoryblokComponent,
 } from "@storyblok/react";
-
-export default function Page() {
-  let { story } = useLoaderData();
-  story = useStoryblokState(story);
-
-  return <StoryblokComponent blok={story.content} />;
-}
+import { useStoryblokData } from "~/hooks";
 
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
@@ -33,29 +27,13 @@ export const loader = async ({ params }) => {
     resolve_relations: resolveRelations,
   });
 
-  const { data: postsByCategory } = await sbApi.get(`cdn/stories/`, {
-    version: "draft",
-    starts_with: "blog/",
-    is_startpage: false,
-    resolve_relations: resolveRelations,
-    filter_query: {
-      categories: {
-        in_array: data.story.uuid,
-      },
-    },
-  });
-
-  const { data: category } = await sbApi.get(`cdn/stories`, {
-    version: "draft",
-    starts_with: "categories/",
-    is_startpage: false,
-  });
-
   return json({
     story: data?.story,
     publishDate: data?.story?.published_at,
     posts: blog?.stories,
-    categories: category?.stories,
-    postsByCategory: postsByCategory?.stories,
   });
 };
+
+const RootPage = () => useStoryblokData();
+
+export default RootPage;
