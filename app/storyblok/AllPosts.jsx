@@ -2,7 +2,8 @@ import { storyblokEditable } from "@storyblok/react";
 import { useLoaderData, Link } from "@remix-run/react";
 
 const AllPosts = ({ blok }) => {
-  const { posts } = useLoaderData();
+  const { posts, total } = useLoaderData();
+  console.log("total", total);
 
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>

@@ -20,10 +20,18 @@ export const loader = async ({ params }) => {
     is_startpage: false,
   });
 
+  let response = await fetch(
+    `https://api.storyblok.com/v2/cdn/stories?token=${process.env.STORYBLOK_PREVIEW_TOKEN}&starts_with=blog/&version=draft/&per_page=20&is_startpage=false`
+  );
+  const total = await response?.headers.get("total");
+
+  console.log("response", await response?.headers.get("total"));
+
   return json({
     story: data?.story,
     publishDate: data?.story?.published_at,
     posts: blog.stories,
+    total,
   });
 };
 
