@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 
 import styles from "./styles/app.css";
 import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
@@ -69,6 +69,11 @@ storyblokInit({
   use: [apiPlugin],
   components,
 });
+
+export const action = async ({ request }) => {
+  const body = await request.formData();
+  return redirect(`/search?query=${body.get("query")}`);
+};
 
 export const meta = () => ({
   charset: "utf-8",

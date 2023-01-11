@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import MainMenu from "./MainMenu";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -10,6 +11,7 @@ const Header = () => {
         </Link>
         <MainMenu />
       </div>
+      <Search />
     </header>
   );
 };
