@@ -12,9 +12,18 @@ export const loader = async ({ request, params }) => {
     starts_with: "blog/",
     is_startpage: false,
     filter_query: {
-      content: {
-        like: `*${query}*`,
-      },
+      __or: [
+        {
+          content: {
+            like: `*${query}*`,
+          },
+        },
+        {
+          headline: {
+            like: `*${query}*`,
+          },
+        },
+      ],
     },
   });
 

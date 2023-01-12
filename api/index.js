@@ -57,7 +57,7 @@ __export(root_exports, {
 var import_react36 = require("@remix-run/react"), import_node = require("@remix-run/node");
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-F3AMUDB7.css";
+var app_default = "/build/_assets/app-MNHWU7FD.css";
 
 // app/root.jsx
 var import_react37 = require("@storyblok/react");
@@ -739,9 +739,18 @@ var import_react41 = require("@remix-run/react"), import_node3 = require("@remix
     starts_with: "blog/",
     is_startpage: !1,
     filter_query: {
-      content: {
-        like: `*${query}*`
-      }
+      __or: [
+        {
+          content: {
+            like: `*${query}*`
+          }
+        },
+        {
+          headline: {
+            like: `*${query}*`
+          }
+        }
+      ]
     }
   });
   return (0, import_node3.json)({ stories: data.stories });
@@ -749,7 +758,7 @@ var import_react41 = require("@remix-run/react"), import_node3 = require("@remix
   let { stories } = (0, import_react41.useLoaderData)();
   return console.log("stories", stories), /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", {}, void 0, !1, {
     fileName: "app/routes/Search.jsx",
-    lineNumber: 27,
+    lineNumber: 36,
     columnNumber: 10
   }, this);
 }, Search_default2 = SearchPage;
@@ -889,7 +898,7 @@ var import_node6 = require("@remix-run/node"), import_react46 = require("@remix-
 }, __default4 = TagPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "df4ff6d7", entry: { module: "/build/entry.client-36ARWUXI.js", imports: ["/build/_shared/chunk-J67M232O.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ECWQLQ73.js", imports: ["/build/_shared/chunk-LSXVF42P.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-5PTITZS6.js", imports: ["/build/_shared/chunk-MAGL2R2G.js", "/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-7J2TOMR7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-SHVAMCEZ.js", imports: ["/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-5LYUJVV5.js", imports: ["/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-RDMLE7X3.js", imports: ["/build/_shared/chunk-MAGL2R2G.js", "/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-XEV46MMR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-6PGEBEF3.js", imports: ["/build/_shared/chunk-LSXVF42P.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-DF4FF6D7.js" };
+var assets_manifest_default = { version: "0ddd0fd8", entry: { module: "/build/entry.client-36ARWUXI.js", imports: ["/build/_shared/chunk-J67M232O.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ALCZGNSA.js", imports: ["/build/_shared/chunk-LSXVF42P.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-5PTITZS6.js", imports: ["/build/_shared/chunk-MAGL2R2G.js", "/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-SUDTF3YK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-SHVAMCEZ.js", imports: ["/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-5LYUJVV5.js", imports: ["/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-RDMLE7X3.js", imports: ["/build/_shared/chunk-MAGL2R2G.js", "/build/_shared/chunk-H6AOPAEY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-XEV46MMR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-6PGEBEF3.js", imports: ["/build/_shared/chunk-LSXVF42P.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-0DDD0FD8.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
