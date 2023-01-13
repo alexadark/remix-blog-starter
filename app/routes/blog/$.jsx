@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useStoryblokData } from "~/hooks";
 
-import { getStoryblokApi } from "@storyblok/react";
+import { getStoryblokApi, redirect } from "@storyblok/react";
 import StoryblokClient from "storyblok-js-client";
 
 const Storyblok = new StoryblokClient({
@@ -10,31 +10,62 @@ const Storyblok = new StoryblokClient({
   // https: true,
 });
 
-export const action = async ({ request }) => {
-  const body = await request.formData();
-  const name = body.get("name");
-  const mail = body.get("mail");
-  const text = body.get("text");
-  const postSlug = body.get("post-slug");
-  return Storyblok.post("spaces/189880/stories/", {
-    story: {
-      name,
-      slug: name,
-      parent_id: 246074567,
-      content: {
+// export const action = async ({ request }) => {
+//   const body = await request.formData();
+//   const name = body.get("name");
+//   const mail = body.get("mail");
+//   const text = body.get("text");
+//   const postSlug = body.get("post-slug");
+//   return Storyblok.post("spaces/189880/stories/", {
+//     story: {
+//       name,
+//       slug: name,
+//       parent_id: 246074567,
+//       content: {
+//         name,
+//         mail,
+//         text,
+//       },
+//     },
+//     publish: 1,
+//   })
+//     .then((response) => {
+//       console.log(response);
+//       return null;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       return null;
+//     });
+// };
+
+const addComment = async (commentData) => {
+  const { name, mail, text } = commentData;
+  try {
+    return await Storyblok.post("spaces/189880/stories/", {
+      story: {
         name,
-        mail,
-        text,
+        slug: name,
+        parent_id: 246074567,
+        content: {
+          name,
+          mail,
+          text,
+        },
       },
-    },
-    publish: 1,
-  })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
+      publish: 1,
     });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const commentData = Object.fromEntries(formData);
+  await addComment(commentData);
+  return null;
 };
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
