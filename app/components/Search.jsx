@@ -2,7 +2,6 @@ import { Form, useSearchParams } from "@remix-run/react";
 
 const Search = () => {
   const [params] = useSearchParams();
-  console.log(params.get("query"));
 
   return (
     <Form method="post">
