@@ -1,4 +1,4 @@
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { useStoryblokData } from "~/hooks";
 
 import { getStoryblokApi } from "@storyblok/react";
@@ -6,6 +6,7 @@ import StoryblokClient from "storyblok-js-client";
 
 const Storyblok = new StoryblokClient({
   oauthToken: process.env.AUTH_TOKEN,
+  // oauthToken: "gsWcuXzHqJsHHeImr7fTcwtt-61919-ZM_c9h5q_gsFLiA_xEiP",
   https: true,
 });
 
@@ -35,7 +36,7 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const commentData = Object.fromEntries(formData);
   await addComment(commentData);
-  return null;
+  return redirect(`/blog/${commentData.name}`);
 };
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
