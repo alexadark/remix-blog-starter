@@ -12,8 +12,7 @@ import { json, redirect } from "@remix-run/node";
 import styles from "./styles/app.css";
 import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
 
-import Header from "~/components/Header";
-import Footer from "~/components/Footer";
+import Layout from "~/components/Layout";
 
 import Page from "./storyblok/Page";
 import Post from "./storyblok/Post";
@@ -90,15 +89,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="flex flex-col justify-between min-h-screen">
-          <div>
-            <Header />
-            <main>
-              <Outlet />
-            </main>
-          </div>
-          <Footer />
-        </div>
+        <Layout>
+          <Outlet />
+        </Layout>
         <script
           dangerouslySetInnerHTML={{
             __html: `window.env = ${JSON.stringify(env)}`,
