@@ -15,6 +15,7 @@ const createPost = async (postData) => {
         slug: headline,
         parent_id: 241402052,
         content: {
+          component: "post",
           headline,
           teaser,
         },
@@ -38,7 +39,7 @@ const CreatePost = () => {
   return (
     <>
       <h1>create post</h1>
-      <Form>
+      <Form method="post">
         <input type="text" name="headline" />
         <textarea name="teaser" id="" cols="30" rows="10"></textarea>
         <button type="submit">Submit</button>

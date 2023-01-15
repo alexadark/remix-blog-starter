@@ -6,7 +6,6 @@ import StoryblokClient from "storyblok-js-client";
 
 const Storyblok = new StoryblokClient({
   oauthToken: process.env.AUTH_TOKEN,
-  // oauthToken: "gsWcuXzHqJsHHeImr7fTcwtt-61919-ZM_c9h5q_gsFLiA_xEiP",
   https: true,
 });
 
@@ -19,6 +18,7 @@ const addComment = async (commentData) => {
         slug: name,
         parent_id: 246074567,
         content: {
+          component: "comment",
           name,
           mail,
           text,
@@ -32,11 +32,49 @@ const addComment = async (commentData) => {
   }
 };
 
+const getCreatedCommentUuid = async (headline) => {
+  const sbApi = getStoryblokApi();
+  const { data } = await sbApi.get(`cdn/stories/`, {
+    version: "draft",
+    starts_with: "comments/",
+    is_startpage: false,
+    filter_query: {
+      headline: {
+        like: headline,
+      },
+    },
+  });
+  return data.stories[0].uuid;
+};
+
+const updatePostWithComment = async (commentData) => {
+  const { name, id, postSlug, headline } = commentData;
+  try {
+    return await Storyblok.put("spaces/189880/stories/", {
+      story: {
+        name,
+        slug: postSlug,
+        id,
+        content: {
+          component: "post",
+          comments: [getCreatedCommentUuid(headline)],
+        },
+      },
+      publish: 1,
+    });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const commentData = Object.fromEntries(formData);
+  console.log("commentData", commentData);
   await addComment(commentData);
-  return redirect(`/blog/${commentData.name}`);
+  await updatePostWithComment(commentData);
+  return redirect(`/blog/${commentData.postSlug}`);
 };
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
@@ -65,6 +103,8 @@ export const loader = async ({ params }) => {
   return json({
     story: data?.story,
     publishDate: data?.story?.published_at,
+    id: data?.story?.id,
+    name: data?.story?.name,
     posts: blog.stories,
     total,
   });

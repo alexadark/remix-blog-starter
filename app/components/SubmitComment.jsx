@@ -1,12 +1,13 @@
 import { Form } from "@remix-run/react";
 
-const SubmitComment = ({ blok }) => {
+const SubmitComment = ({ slug, id, name }) => {
   return (
     <div>
       <h3>Submit Comment</h3>
       <Form method="post" className="block space-y-4">
-        <input type="hidden" name="post-slug" value={blok.slug} />
-        <input type="hidden" name="uuid" value={blok.uuid} />
+        <input type="hidden" name="postSlug" value={slug} />
+        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="name" value={name} />
         <input type="text" name="name" placeholder="name" />
         <input type="text" name="mail" id="" placeholder="mail" />
         <textarea
