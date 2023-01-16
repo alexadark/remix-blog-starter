@@ -480,7 +480,7 @@ var import_react14 = require("@storyblok/react"), import_jsx_dev_runtime10 = req
 var import_react17 = require("@storyblok/react"), import_storyblok_rich_text_react_renderer2 = require("storyblok-rich-text-react-renderer"), import_react18 = require("@remix-run/react");
 
 // app/components/SubmitComment.jsx
-var import_react16 = require("@remix-run/react"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), SubmitComment = ({ slug, id, name }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { children: [
+var import_react16 = require("@remix-run/react"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), SubmitComment = ({ slug, id, name, blok }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { children: [
   /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { children: "Submit Comment" }, void 0, !1, {
     fileName: "app/components/SubmitComment.jsx",
     lineNumber: 6,
@@ -497,19 +497,24 @@ var import_react16 = require("@remix-run/react"), import_jsx_dev_runtime11 = req
       lineNumber: 9,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "hidden", name: "name", value: name }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "hidden", name: "postName", value: name }, void 0, !1, {
       fileName: "app/components/SubmitComment.jsx",
       lineNumber: 10,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "text", name: "name", placeholder: "name" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "hidden", name: "blok", value: JSON.stringify(blok) }, void 0, !1, {
       fileName: "app/components/SubmitComment.jsx",
       lineNumber: 11,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "text", name: "mail", id: "", placeholder: "mail" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "text", name: "name", placeholder: "name" }, void 0, !1, {
       fileName: "app/components/SubmitComment.jsx",
       lineNumber: 12,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "text", name: "mail", id: "", placeholder: "mail" }, void 0, !1, {
+      fileName: "app/components/SubmitComment.jsx",
+      lineNumber: 13,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
@@ -525,14 +530,14 @@ var import_react16 = require("@remix-run/react"), import_jsx_dev_runtime11 = req
       !1,
       {
         fileName: "app/components/SubmitComment.jsx",
-        lineNumber: 13,
+        lineNumber: 14,
         columnNumber: 9
       },
       this
     ),
     /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("input", { type: "submit" }, void 0, !1, {
       fileName: "app/components/SubmitComment.jsx",
-      lineNumber: 20,
+      lineNumber: 21,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
@@ -550,7 +555,7 @@ var import_react16 = require("@remix-run/react"), import_jsx_dev_runtime11 = req
 var import_date_fns = require("date-fns"), import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), import_react19 = require("react"), Post = ({ blok }) => {
   let { publishDate, id, name } = (0, import_react18.useLoaderData)(), slug = (0, import_react18.useParams)()["*"];
   console.log("params", slug);
-  let { headline, content, categories, image, tags, author } = blok;
+  let { headline, content, categories, image, tags, author, comments } = blok;
   return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_jsx_dev_runtime12.Fragment, { children: [
     /* @__PURE__ */ (0, import_react19.createElement)("article", { ...(0, import_react17.storyblokEditable)(blok), key: blok._uid }, /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: (0, import_date_fns.format)(new Date(publishDate), "MMMM dd, yyyy") }, void 0, !1, {
       fileName: "app/storyblok/Post.jsx",
@@ -616,7 +621,7 @@ var import_date_fns = require("date-fns"), import_jsx_dev_runtime12 = require("r
       lineNumber: 43,
       columnNumber: 9
     }, this)),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(SubmitComment_default, { slug, id, name }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(SubmitComment_default, { slug, id, name, blok }, void 0, !1, {
       fileName: "app/storyblok/Post.jsx",
       lineNumber: 45,
       columnNumber: 7
@@ -1156,59 +1161,10 @@ var import_node5 = require("@remix-run/node");
 var import_react48 = require("@storyblok/react"), import_storyblok_js_client2 = __toESM(require("storyblok-js-client")), Storyblok2 = new import_storyblok_js_client2.default({
   oauthToken: process.env.AUTH_TOKEN,
   https: !0
-}), addComment = async (commentData) => {
-  let { name, mail, text } = commentData;
-  try {
-    return await Storyblok2.post("spaces/189880/stories/", {
-      story: {
-        name,
-        slug: name,
-        parent_id: 246074567,
-        content: {
-          component: "comment",
-          name,
-          mail,
-          text
-        }
-      },
-      publish: 1
-    });
-  } catch (error) {
-    throw console.log(error), error;
-  }
-}, getCreatedCommentUuid = async (headline) => {
-  let sbApi = (0, import_react48.getStoryblokApi)(), { data } = await sbApi.get("cdn/stories/", {
-    version: "draft",
-    starts_with: "comments/",
-    is_startpage: !1,
-    filter_query: {
-      headline: {
-        like: headline
-      }
-    }
-  });
-  return data.stories[0].uuid;
-}, updatePostWithComment = async (commentData) => {
-  let { name, id, postSlug, headline } = commentData;
-  try {
-    return await Storyblok2.put("spaces/189880/stories/", {
-      story: {
-        name,
-        slug: postSlug,
-        id,
-        content: {
-          component: "post",
-          comments: [getCreatedCommentUuid(headline)]
-        }
-      },
-      publish: 1
-    });
-  } catch (error) {
-    throw console.log(error), error;
-  }
-}, action3 = async ({ request }) => {
-  let formData = await request.formData(), commentData = Object.fromEntries(formData);
-  return console.log("commentData", commentData), await addComment(commentData), await updatePostWithComment(commentData), (0, import_node5.redirect)(`/blog/${commentData.postSlug}`);
+});
+var action3 = async ({ request }) => {
+  let formData = await request.formData(), commentData = Object.fromEntries(formData), postData = JSON.parse(commentData.blok);
+  return console.log("commentData", postData), (0, import_node5.redirect)(`/blog/${commentData.postSlug}`);
 }, loader4 = async ({ params }) => {
   var _a, _b, _c;
   let slug = params["*"] ?? "home", sbApi = (0, import_react48.getStoryblokApi)(), resolveRelations = ["post.categories", "post.tags", "post.author"], { data } = await sbApi.get(`cdn/stories/blog/${slug}`, {
@@ -1339,7 +1295,7 @@ var import_node7 = require("@remix-run/node"), import_react51 = require("@remix-
 }, __default4 = TagPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "4dec10d9", entry: { module: "/build/entry.client-LTXVPIUH.js", imports: ["/build/_shared/chunk-S3ZP66JD.js", "/build/_shared/chunk-AUMS3EWJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-3I3CYQMO.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-NYSW7LYL.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-GTEMSHMW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-M7FYHGFX.js", imports: ["/build/_shared/chunk-J2FGCOTP.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-GBTZY45X.js", imports: ["/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/create-post": { id: "routes/create-post", parentId: "root", path: "create-post", index: void 0, caseSensitive: void 0, module: "/build/routes/create-post-TI6TEDEL.js", imports: ["/build/_shared/chunk-J2FGCOTP.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-CTEFYUGQ.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-GASWUA3J.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-ONSKBKD3.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-4DEC10D9.js" };
+var assets_manifest_default = { version: "a1c761f6", entry: { module: "/build/entry.client-LTXVPIUH.js", imports: ["/build/_shared/chunk-S3ZP66JD.js", "/build/_shared/chunk-AUMS3EWJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-47FWATI5.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-NYSW7LYL.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-GTEMSHMW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-QBEIVFY2.js", imports: ["/build/_shared/chunk-J2FGCOTP.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-GBTZY45X.js", imports: ["/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/create-post": { id: "routes/create-post", parentId: "root", path: "create-post", index: void 0, caseSensitive: void 0, module: "/build/routes/create-post-TI6TEDEL.js", imports: ["/build/_shared/chunk-J2FGCOTP.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-CTEFYUGQ.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-GASWUA3J.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-ONSKBKD3.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-A1C761F6.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

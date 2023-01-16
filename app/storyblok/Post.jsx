@@ -9,7 +9,7 @@ const Post = ({ blok }) => {
   const { publishDate, id, name } = useLoaderData();
   const slug = useParams()["*"];
   console.log("params", slug);
-  const { headline, content, categories, image, tags, author } = blok;
+  const { headline, content, categories, image, tags, author, comments } = blok;
   return (
     <>
       <article {...storyblokEditable(blok)} key={blok._uid}>
@@ -42,7 +42,7 @@ const Post = ({ blok }) => {
         <h3>Author</h3>
         <div>{author.name}</div>
       </article>
-      <SubmitComment slug={slug} id={id} name={name} />
+      <SubmitComment slug={slug} id={id} name={name} blok={blok} />
     </>
   );
 };

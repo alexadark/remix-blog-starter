@@ -32,32 +32,42 @@ const addComment = async (commentData) => {
   }
 };
 
-const getCreatedCommentUuid = async (headline) => {
+const getCreatedCommentUuid = async (name) => {
   const sbApi = getStoryblokApi();
   const { data } = await sbApi.get(`cdn/stories/`, {
     version: "draft",
     starts_with: "comments/",
     is_startpage: false,
     filter_query: {
-      headline: {
-        like: headline,
+      name: {
+        like: name,
       },
     },
   });
+  console.log("data", data);
   return data.stories[0].uuid;
 };
 
-const updatePostWithComment = async (commentData) => {
-  const { name, id, postSlug, headline } = commentData;
+const updatePostWithComment = async (commentData, uuid, postData) => {
+  const { name, id, postSlug } = commentData;
   try {
-    return await Storyblok.put("spaces/189880/stories/", {
+    return await Storyblok.put(`spaces/189880/stories/${id}`, {
       story: {
         name,
         slug: postSlug,
         id,
         content: {
           component: "post",
-          comments: [getCreatedCommentUuid(headline)],
+          headline: postData.headline,
+          teaser: postData.teaser,
+          image: postData.image,
+          seo: postData.seo,
+          content: postData.content,
+          tags: postData.tags,
+          categories: postData.categories,
+          author: postData.author,
+          ...postData,
+          comments: [...postData.comments, uuid],
         },
       },
       publish: 1,
@@ -71,11 +81,16 @@ const updatePostWithComment = async (commentData) => {
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const commentData = Object.fromEntries(formData);
-  console.log("commentData", commentData);
-  await addComment(commentData);
-  await updatePostWithComment(commentData);
+  const postData = JSON.parse(commentData.blok);
+  console.log("commentData", postData);
+
+  // await addComment(commentData);
+  // const uuid = await getCreatedCommentUuid(commentData.name);
+  // await updatePostWithComment(commentData, uuid, postData);
+
   return redirect(`/blog/${commentData.postSlug}`);
 };
+
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
   const sbApi = getStoryblokApi();
