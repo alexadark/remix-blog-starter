@@ -58,14 +58,6 @@ const updatePostWithComment = async (commentData, uuid, postData) => {
         id,
         content: {
           component: "post",
-          headline: postData.headline,
-          teaser: postData.teaser,
-          image: postData.image,
-          seo: postData.seo,
-          content: postData.content,
-          tags: postData.tags,
-          categories: postData.categories,
-          author: postData.author,
           ...postData,
           comments: [...postData.comments, uuid],
         },
@@ -84,9 +76,9 @@ export const action = async ({ request }) => {
   const postData = JSON.parse(commentData.blok);
   console.log("commentData", postData);
 
-  // await addComment(commentData);
-  // const uuid = await getCreatedCommentUuid(commentData.name);
-  // await updatePostWithComment(commentData, uuid, postData);
+  await addComment(commentData);
+  const uuid = await getCreatedCommentUuid(commentData.name);
+  await updatePostWithComment(commentData, uuid, postData);
 
   return redirect(`/blog/${commentData.postSlug}`);
 };
