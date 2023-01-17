@@ -3,6 +3,7 @@ import { useStoryblokData } from "~/hooks";
 
 import { getStoryblokApi } from "@storyblok/react";
 import StoryblokClient from "storyblok-js-client";
+import { v4 as uuidv4 } from "uuid";
 
 const Storyblok = new StoryblokClient({
   oauthToken: process.env.AUTH_TOKEN,
@@ -43,7 +44,7 @@ const addComment = async (commentData) => {
     return await Storyblok.post("spaces/189880/stories/", {
       story: {
         name,
-        slug: name,
+        slug: uuidv4(),
         parent_id: 246074567,
         content: {
           component: "comment",

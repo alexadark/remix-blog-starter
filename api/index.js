@@ -61,7 +61,7 @@ __export(root_exports, {
 var import_react40 = require("@remix-run/react"), import_node = require("@remix-run/node");
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-LSZYOL5F.css";
+var app_default = "/build/_assets/app-QHYGVTYQ.css";
 
 // app/root.jsx
 var import_react41 = require("@storyblok/react");
@@ -761,28 +761,28 @@ var import_react30 = require("@storyblok/react"), import_react31 = require("@rem
         !1,
         {
           fileName: "app/storyblok/AllCategories.jsx",
-          lineNumber: 17,
-          columnNumber: 19
+          lineNumber: 15,
+          columnNumber: 17
         },
         this
       ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("h2", { className: "text-lg font-semibold text-gray-900", children: category.headline }, void 0, !1, {
         fileName: "app/storyblok/AllCategories.jsx",
-        lineNumber: 24,
-        columnNumber: 21
+        lineNumber: 22,
+        columnNumber: 19
       }, this) }, void 0, !1, {
         fileName: "app/storyblok/AllCategories.jsx",
-        lineNumber: 23,
-        columnNumber: 19
+        lineNumber: 21,
+        columnNumber: 17
       }, this)
     ] }, void 0, !0, {
       fileName: "app/storyblok/AllCategories.jsx",
-      lineNumber: 16,
-      columnNumber: 17
+      lineNumber: 14,
+      columnNumber: 15
     }, this) }, category._uid, !1, {
       fileName: "app/storyblok/AllCategories.jsx",
-      lineNumber: 15,
-      columnNumber: 15
+      lineNumber: 13,
+      columnNumber: 13
     }, this);
   }) }, void 0, !1, {
     fileName: "app/storyblok/AllCategories.jsx",
@@ -1157,7 +1157,7 @@ __export(__exports2, {
   loader: () => loader4
 });
 var import_node5 = require("@remix-run/node");
-var import_react48 = require("@storyblok/react"), import_storyblok_js_client2 = __toESM(require("storyblok-js-client")), Storyblok2 = new import_storyblok_js_client2.default({
+var import_react48 = require("@storyblok/react"), import_storyblok_js_client2 = __toESM(require("storyblok-js-client")), import_uuid = require("uuid"), Storyblok2 = new import_storyblok_js_client2.default({
   oauthToken: process.env.AUTH_TOKEN,
   https: !0
 }), makeTranslatable = async () => {
@@ -1189,7 +1189,7 @@ var import_react48 = require("@storyblok/react"), import_storyblok_js_client2 = 
     return await Storyblok2.post("spaces/189880/stories/", {
       story: {
         name,
-        slug: name,
+        slug: (0, import_uuid.v4)(),
         parent_id: 246074567,
         content: {
           component: "comment",
@@ -1377,7 +1377,7 @@ var import_node7 = require("@remix-run/node"), import_react51 = require("@remix-
 }, __default4 = TagPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "41ffc5d9", entry: { module: "/build/entry.client-LTXVPIUH.js", imports: ["/build/_shared/chunk-S3ZP66JD.js", "/build/_shared/chunk-AUMS3EWJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-47FWATI5.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-NYSW7LYL.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-GTEMSHMW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-RCSP552U.js", imports: ["/build/_shared/chunk-J2FGCOTP.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-GSD4AZAN.js", imports: ["/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/create-post": { id: "routes/create-post", parentId: "root", path: "create-post", index: void 0, caseSensitive: void 0, module: "/build/routes/create-post-TI6TEDEL.js", imports: ["/build/_shared/chunk-J2FGCOTP.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-CTEFYUGQ.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-GASWUA3J.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-ONSKBKD3.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-41FFC5D9.js" };
+var assets_manifest_default = { version: "9744bb7c", entry: { module: "/build/entry.client-LTXVPIUH.js", imports: ["/build/_shared/chunk-S3ZP66JD.js", "/build/_shared/chunk-AUMS3EWJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-2TBVOTCA.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-NYSW7LYL.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-GTEMSHMW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-RX6SW7LF.js", imports: ["/build/_shared/chunk-J2FGCOTP.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-GSD4AZAN.js", imports: ["/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/create-post": { id: "routes/create-post", parentId: "root", path: "create-post", index: void 0, caseSensitive: void 0, module: "/build/routes/create-post-TI6TEDEL.js", imports: ["/build/_shared/chunk-J2FGCOTP.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-CTEFYUGQ.js", imports: ["/build/_shared/chunk-IRUKAZE7.js", "/build/_shared/chunk-MUCPB2EB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-GASWUA3J.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-ONSKBKD3.js", imports: ["/build/_shared/chunk-NLX3DJXF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-9744BB7C.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
