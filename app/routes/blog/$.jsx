@@ -9,6 +9,7 @@ const Storyblok = new StoryblokClient({
   https: true,
 });
 
+//Create a new comment with the MAPI
 const addComment = async (commentData) => {
   const { name, mail, text } = commentData;
   try {
@@ -32,6 +33,7 @@ const addComment = async (commentData) => {
   }
 };
 
+//Get the uuid of the newly created comment to add it to the post from which it was created
 const getCreatedCommentUuid = async (name) => {
   const sbApi = getStoryblokApi();
   const { data } = await sbApi.get(`cdn/stories/`, {
@@ -40,16 +42,16 @@ const getCreatedCommentUuid = async (name) => {
     is_startpage: false,
     filter_query: {
       name: {
-        like: name,
+        like: name, // We want the comment which has the same name as the one we just created
       },
     },
   });
-  console.log("data", data);
-  return data.stories[0].uuid;
+  return data.stories[0].uuid; //we get the uuid of the comment
 };
 
-const updatePostWithComment = async (commentData, uuid, postData) => {
-  const { postName, id, postSlug } = commentData;
+const updatePostWithComment = async (formData, uuid) => {
+  const { postName, id, postSlug } = formData;
+  const postData = JSON.parse(formData.blok); //We get the all the existing data from the post from the form data
   try {
     return await Storyblok.put(`spaces/189880/stories/${id}`, {
       story: {
@@ -58,11 +60,11 @@ const updatePostWithComment = async (commentData, uuid, postData) => {
         id,
         content: {
           component: "post",
-          ...postData,
+          ...postData, //We add the existing data to the new data
           categories: postData.categories.map((cat) => cat.uuid),
           tags: postData.tags.map((tag) => tag.uuid),
           author: postData.author.uuid,
-          comments: [...postData.comments, uuid],
+          comments: [...postData.comments.map((comment) => comment.uuid), uuid], //we had the new comment with the uuid we got from the getCreatedCommentUuid function
         },
       },
       publish: 1,
@@ -74,28 +76,24 @@ const updatePostWithComment = async (commentData, uuid, postData) => {
 };
 
 export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const commentData = Object.fromEntries(formData);
-  const postData = JSON.parse(commentData.blok);
-  console.log("postData", postData.seo);
-  // console.log(
-  //   "categories",
-  //   postData.categories.map((cat) => cat.uuid),
-  //   "comment",
-  //   postData.comments
-  // );
+  let formData = await request.formData();
+  formData = Object.fromEntries(formData);
+  await addComment(formData); //We create the comment
+  const uuid = await getCreatedCommentUuid(formData.name); //we get the uuid of the newly created comment
+  await updatePostWithComment(formData, uuid); //we update the post with the new comment
 
-  await addComment(commentData);
-  const uuid = await getCreatedCommentUuid(commentData.name);
-  await updatePostWithComment(commentData, uuid, postData);
-
-  return redirect(`/blog/${commentData.postSlug}`);
+  return redirect(`/blog/${formData.postSlug}`);
 };
 
 export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
   const sbApi = getStoryblokApi();
-  const resolveRelations = ["post.categories", "post.tags", "post.author"];
+  const resolveRelations = [
+    "post.categories",
+    "post.tags",
+    "post.author",
+    "post.comments",
+  ];
 
   const { data } = await sbApi.get(`cdn/stories/blog/${slug}`, {
     version: "draft",

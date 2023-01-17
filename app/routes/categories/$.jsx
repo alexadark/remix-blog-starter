@@ -11,7 +11,6 @@ export const loader = async ({ params }) => {
 
   const { data } = await sbApi.get(`cdn/stories/categories/${slug}`, {
     version: "draft",
-    resolve_relations: resolveRelations,
   });
 
   const { data: categories } = await sbApi.get(`cdn/stories`, {
