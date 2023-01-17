@@ -9,6 +9,33 @@ const Storyblok = new StoryblokClient({
   https: true,
 });
 
+//Make all the post fields translatable with the MAPI
+const makeTranslatable = async () => {
+  try {
+    return await Storyblok.put(`spaces/189880/components/3272624`, {
+      component: {
+        id: 3272624,
+        name: "post",
+        display_name: "Translatable Post",
+        schema: {
+          headline: {
+            translatable: true,
+          },
+          content: {
+            translatable: true,
+          },
+          teaser: {
+            translatable: true,
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 //Create a new comment with the MAPI
 const addComment = async (commentData) => {
   const { name, mail, text } = commentData;
@@ -80,6 +107,7 @@ export const action = async ({ request }) => {
   formData = Object.fromEntries(formData);
   await addComment(formData); //We create the comment
   const uuid = await getCreatedCommentUuid(formData.name); //we get the uuid of the newly created comment
+  await makeTranslatable();
   await updatePostWithComment(formData, uuid); //we update the post with the new comment
 
   return redirect(`/blog/${formData.postSlug}`);
