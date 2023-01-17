@@ -49,16 +49,19 @@ const getCreatedCommentUuid = async (name) => {
 };
 
 const updatePostWithComment = async (commentData, uuid, postData) => {
-  const { name, id, postSlug } = commentData;
+  const { postName, id, postSlug } = commentData;
   try {
     return await Storyblok.put(`spaces/189880/stories/${id}`, {
       story: {
-        name,
+        name: postName,
         slug: postSlug,
         id,
         content: {
           component: "post",
           ...postData,
+          categories: postData.categories.map((cat) => cat.uuid),
+          tags: postData.tags.map((tag) => tag.uuid),
+          author: postData.author.uuid,
           comments: [...postData.comments, uuid],
         },
       },
@@ -74,7 +77,13 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const commentData = Object.fromEntries(formData);
   const postData = JSON.parse(commentData.blok);
-  console.log("commentData", postData);
+  console.log("postData", postData.seo);
+  // console.log(
+  //   "categories",
+  //   postData.categories.map((cat) => cat.uuid),
+  //   "comment",
+  //   postData.comments
+  // );
 
   await addComment(commentData);
   const uuid = await getCreatedCommentUuid(commentData.name);
