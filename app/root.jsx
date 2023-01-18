@@ -72,6 +72,7 @@ storyblokInit({
 export const action = async ({ request }) => {
   const body = await request.formData();
   return redirect(`/search?query=${body.get("query")}`);
+  // json({ isSearching: body.get("isSearching") })
 };
 
 export const meta = () => ({

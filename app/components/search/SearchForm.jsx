@@ -1,14 +1,19 @@
 import { useEffect, useRef } from "react";
-import { Form, useSearchParams } from "@remix-run/react";
+import { Form, useSearchParams, useTransition } from "@remix-run/react";
 import clsx from "clsx";
 
 const SearchForm = () => {
   const [params] = useSearchParams();
   const query = params.get("query");
+  let transition = useTransition();
+  let isSearching =
+    transition.state === "submitting" &&
+    transition.submission.formData.get("_action") === "search";
+
   let formRef = useRef();
   useEffect(() => {
-    formRef.current.reset();
-  }, []);
+    isSearching && formRef.current.reset();
+  }, [isSearching]);
 
   return (
     <Form
@@ -16,13 +21,12 @@ const SearchForm = () => {
       ref={formRef}
       className="flex justify-between md:w-[90%]"
     >
+      <input type="hidden" value={isSearching} name="isSearching" />
       <input
         type="text"
         name="query"
         placeholder="Search..."
         defaultValue={query}
-        // value={value}
-        // onSubmit={() => setValue("")}
         className={clsx(
           "w-full h-12",
           "bg-black",
@@ -32,6 +36,9 @@ const SearchForm = () => {
           "focus:outline-none focus:ring-transparent focus:placeholder-transparent  text-white"
         )}
       />
+      <button type="submit" name="_action" value="search">
+        {isSearching ? "searching" : "Search"}
+      </button>
     </Form>
   );
 };

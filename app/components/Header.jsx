@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import MainMenu from "./MainMenu";
 import Search from "./search";
+import SearchForm from "./search/SearchForm";
 import Headroom from "react-headroom";
 
 const Header = () => {
@@ -13,9 +14,10 @@ const Header = () => {
           </Link>
           <div className="flex justify-between gap-5">
             <MainMenu />
-            <Search />
+            {/* <Search /> */}
           </div>
         </div>
+        <SearchForm />
       </header>
     </Headroom>
   );

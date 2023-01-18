@@ -1,6 +1,7 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useActionData } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import { getStoryblokApi } from "@storyblok/react";
+import ls from "local-storage";
 
 export const loader = async ({ request, params }) => {
   const sbApi = getStoryblokApi();
@@ -31,6 +32,8 @@ export const loader = async ({ request, params }) => {
 };
 
 const SearchPage = () => {
+  const data = useActionData();
+  console.log("data", data);
   const { stories } = useLoaderData();
   console.log("stories", stories);
   return <div></div>;
