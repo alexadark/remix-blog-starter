@@ -9,7 +9,7 @@ const SearchForm = () => {
   let isSearching =
     transition.state === "submitting" &&
     transition.submission.formData.get("_action") === "search";
-
+  console.log("transition", transition.state);
   let formRef = useRef();
   useEffect(() => {
     isSearching && formRef.current.reset();
