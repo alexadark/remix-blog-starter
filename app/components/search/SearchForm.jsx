@@ -12,7 +12,9 @@ const SearchForm = () => {
   console.log("transition", transition.state);
   let formRef = useRef();
   useEffect(() => {
-    isSearching && formRef.current.reset();
+    if (!isSearching) {
+      formRef.current?.reset();
+    }
   }, [isSearching]);
 
   return (
