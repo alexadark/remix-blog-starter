@@ -1,16 +1,24 @@
 import { useEffect, useRef } from "react";
-import { Form, useSearchParams, useTransition } from "@remix-run/react";
+import {
+  Form,
+  useSearchParams,
+  useTransition,
+  useLocation,
+} from "@remix-run/react";
 import clsx from "clsx";
 
 const SearchForm = () => {
   const [params] = useSearchParams();
   const query = params.get("query");
   let transition = useTransition();
+  let location = useLocation();
+
   let isSearching =
     transition.state === "submitting" &&
     transition.submission.formData.get("_action") === "search";
-  console.log("transition", transition.state);
+  let isRedirect = location.state?.isRedirect;
   let formRef = useRef();
+
   useEffect(() => {
     if (!isSearching) {
       formRef.current?.reset();
@@ -28,7 +36,7 @@ const SearchForm = () => {
         type="text"
         name="query"
         placeholder="Search..."
-        defaultValue={query}
+        defaultValue={isRedirect ? "" : query}
         className={clsx(
           "w-full h-12",
           "bg-black",

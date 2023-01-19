@@ -85,12 +85,11 @@ var import_react2 = require("@storyblok/react"), import_react3 = require("@remix
 
 // app/components/search/SearchForm.jsx
 var import_react4 = require("react"), import_react5 = require("@remix-run/react"), import_clsx = __toESM(require("clsx")), import_jsx_dev_runtime3 = require("react/jsx-dev-runtime"), SearchForm = () => {
-  let [params] = (0, import_react5.useSearchParams)(), query = params.get("query"), transition = (0, import_react5.useTransition)(), isSearching = transition.state === "submitting" && transition.submission.formData.get("_action") === "search";
-  console.log("transition", transition.state);
-  let formRef = (0, import_react4.useRef)();
+  var _a;
+  let [params] = (0, import_react5.useSearchParams)(), query = params.get("query"), transition = (0, import_react5.useTransition)(), location = (0, import_react5.useLocation)(), isSearching = transition.state === "submitting" && transition.submission.formData.get("_action") === "search", isRedirect = (_a = location.state) == null ? void 0 : _a.isRedirect, formRef = (0, import_react4.useRef)();
   return (0, import_react4.useEffect)(() => {
-    var _a;
-    isSearching || (_a = formRef.current) == null || _a.reset();
+    var _a2;
+    isSearching || (_a2 = formRef.current) == null || _a2.reset();
   }, [isSearching]), /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
     import_react5.Form,
     {
@@ -100,7 +99,7 @@ var import_react4 = require("react"), import_react5 = require("@remix-run/react"
       children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("input", { type: "hidden", value: isSearching, name: "isSearching" }, void 0, !1, {
           fileName: "app/components/search/SearchForm.jsx",
-          lineNumber: 26,
+          lineNumber: 34,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
@@ -109,7 +108,7 @@ var import_react4 = require("react"), import_react5 = require("@remix-run/react"
             type: "text",
             name: "query",
             placeholder: "Search...",
-            defaultValue: query,
+            defaultValue: isRedirect ? "" : query,
             className: (0, import_clsx.default)(
               "w-full h-12",
               "bg-black",
@@ -123,14 +122,14 @@ var import_react4 = require("react"), import_react5 = require("@remix-run/react"
           !1,
           {
             fileName: "app/components/search/SearchForm.jsx",
-            lineNumber: 27,
+            lineNumber: 35,
             columnNumber: 7
           },
           this
         ),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("button", { type: "submit", name: "_action", value: "search", children: isSearching ? "searching" : "Search" }, void 0, !1, {
           fileName: "app/components/search/SearchForm.jsx",
-          lineNumber: 41,
+          lineNumber: 49,
           columnNumber: 7
         }, this)
       ]
@@ -139,7 +138,7 @@ var import_react4 = require("react"), import_react5 = require("@remix-run/react"
     !0,
     {
       fileName: "app/components/search/SearchForm.jsx",
-      lineNumber: 21,
+      lineNumber: 29,
       columnNumber: 5
     },
     this
@@ -946,7 +945,7 @@ __export(Search_exports, {
   default: () => Search_default,
   loader: () => loader3
 });
-var import_react44 = require("@remix-run/react"), import_node4 = require("@remix-run/node"), import_react45 = require("@storyblok/react"), import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader3 = async ({ request, params }) => {
+var import_react44 = require("@remix-run/react"), import_node4 = require("@remix-run/node"), import_react45 = require("@storyblok/react"), import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader3 = async ({ request }) => {
   let sbApi = (0, import_react45.getStoryblokApi)(), url = new URL(request.url), query = new URLSearchParams(url.search).get("query"), { data } = await sbApi.get("cdn/stories", {
     version: "draft",
     starts_with: "blog/",
@@ -1183,7 +1182,7 @@ var import_node7 = require("@remix-run/node"), import_react49 = require("@remix-
 }, __default4 = TagPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "5ccaa4a8", entry: { module: "/build/entry.client-QTAK2JC5.js", imports: ["/build/_shared/chunk-ML7XFF5N.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-H7IJMCNK.js", imports: ["/build/_shared/chunk-OV3S7X37.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-6V4XCPRQ.js", imports: ["/build/_shared/chunk-XXL3D7DN.js", "/build/_shared/chunk-MVGZBQ4T.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-FIM5SKH2.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-4B7NMB5T.js", imports: ["/build/_shared/chunk-J2FGCOTP.js", "/build/_shared/chunk-MVGZBQ4T.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-SRY33EVM.js", imports: ["/build/_shared/chunk-MVGZBQ4T.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/create-post": { id: "routes/create-post", parentId: "root", path: "create-post", index: void 0, caseSensitive: void 0, module: "/build/routes/create-post-6JLTDAU2.js", imports: ["/build/_shared/chunk-J2FGCOTP.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-S6JUURPN.js", imports: ["/build/_shared/chunk-XXL3D7DN.js", "/build/_shared/chunk-MVGZBQ4T.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-JTEYZNZX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-KBX3NPCS.js", imports: ["/build/_shared/chunk-OV3S7X37.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-5CCAA4A8.js" };
+var assets_manifest_default = { version: "50027976", entry: { module: "/build/entry.client-C3JWUVF2.js", imports: ["/build/_shared/chunk-X4NYAWXF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-N7NROZBP.js", imports: ["/build/_shared/chunk-YR3EIAYZ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-SBNMP6IK.js", imports: ["/build/_shared/chunk-PXW75JP4.js", "/build/_shared/chunk-LO6A2ZQC.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/Search": { id: "routes/Search", parentId: "root", path: "Search", index: void 0, caseSensitive: void 0, module: "/build/routes/Search-XJC7MAMV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/blog/$": { id: "routes/blog/$", parentId: "root", path: "blog/*", index: void 0, caseSensitive: void 0, module: "/build/routes/blog/$-YVXQAA2L.js", imports: ["/build/_shared/chunk-J2FGCOTP.js", "/build/_shared/chunk-LO6A2ZQC.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/categories/$": { id: "routes/categories/$", parentId: "root", path: "categories/*", index: void 0, caseSensitive: void 0, module: "/build/routes/categories/$-MLWHOPL2.js", imports: ["/build/_shared/chunk-LO6A2ZQC.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/create-post": { id: "routes/create-post", parentId: "root", path: "create-post", index: void 0, caseSensitive: void 0, module: "/build/routes/create-post-DAXUNQ3F.js", imports: ["/build/_shared/chunk-J2FGCOTP.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-WD3A2K35.js", imports: ["/build/_shared/chunk-PXW75JP4.js", "/build/_shared/chunk-LO6A2ZQC.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags": { id: "routes/tags", parentId: "root", path: "tags", index: void 0, caseSensitive: void 0, module: "/build/routes/tags-HJABNZSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/tags/$": { id: "routes/tags/$", parentId: "routes/tags", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/tags/$-XRORSLKT.js", imports: ["/build/_shared/chunk-YR3EIAYZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-50027976.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

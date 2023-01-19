@@ -2,7 +2,7 @@ import { useLoaderData, useActionData } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import { getStoryblokApi } from "@storyblok/react";
 
-export const loader = async ({ request, params }) => {
+export const loader = async ({ request }) => {
   const sbApi = getStoryblokApi();
   const url = new URL(request.url);
   const search = new URLSearchParams(url.search);
